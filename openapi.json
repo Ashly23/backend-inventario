@@ -1,0 +1,5439 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "backend-inventario",
+    "version": "0.0.1",
+    "description": "backend-inventario",
+    "contact": {
+      "name": "Ashly Pineda",
+      "email": "pinedaashly23@gmail.com"
+    }
+  },
+  "paths": {
+    "/Categorias/count": {
+      "get": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "count",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Categorias model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Categorias.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Categorias>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "CategoriasController.count"
+      }
+    },
+    "/Categorias/{id}": {
+      "put": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Categorias PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categorias"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "CategoriasController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Categorias PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriasPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "CategoriasController.updateById"
+      },
+      "get": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "findById",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Categorias model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categorias.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "CategoriasController.findById"
+      },
+      "delete": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Categorias DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "CategoriasController.deleteById"
+      }
+    },
+    "/Categorias": {
+      "post": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "create",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Categorias model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categorias"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCategorias"
+              }
+            }
+          }
+        },
+        "operationId": "CategoriasController.create"
+      },
+      "patch": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Categorias PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Categorias.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Categorias>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriasPartial"
+              }
+            }
+          }
+        },
+        "operationId": "CategoriasController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "CategoriasController",
+        "x-operation-name": "find",
+        "tags": [
+          "CategoriasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Categorias model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriasWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categorias.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "CategoriasController.find"
+      }
+    },
+    "/areas/count": {
+      "get": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "count",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Area model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Area.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Area>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AreaController.count"
+      }
+    },
+    "/areas/{id}": {
+      "put": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Area PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Area"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AreaController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Area PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AreaPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AreaController.updateById"
+      },
+      "get": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "findById",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Area model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AreaWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Area.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AreaController.findById"
+      },
+      "delete": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Area DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "AreaController.deleteById"
+      }
+    },
+    "/areas": {
+      "post": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "create",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Area model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Area"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewArea"
+              }
+            }
+          }
+        },
+        "operationId": "AreaController.create"
+      },
+      "patch": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Area PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Area.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Area>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AreaPartial"
+              }
+            }
+          }
+        },
+        "operationId": "AreaController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "AreaController",
+        "x-operation-name": "find",
+        "tags": [
+          "AreaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Area model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AreaWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Area.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AreaController.find"
+      }
+    },
+    "/empleado-productos/count": {
+      "get": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "count",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EmpleadoProducto model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "EmpleadoProducto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<EmpleadoProducto>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoProductoController.count"
+      }
+    },
+    "/empleado-productos/{id}": {
+      "put": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "EmpleadoProducto PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpleadoProducto"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoProductoController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "EmpleadoProducto PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpleadoProductoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoProductoController.updateById"
+      },
+      "get": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "findById",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EmpleadoProducto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpleadoProductoWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpleadoProducto.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoProductoController.findById"
+      },
+      "delete": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "EmpleadoProducto DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "EmpleadoProductoController.deleteById"
+      }
+    },
+    "/empleado-productos": {
+      "post": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "create",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EmpleadoProducto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpleadoProducto"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEmpleadoProducto"
+              }
+            }
+          }
+        },
+        "operationId": "EmpleadoProductoController.create"
+      },
+      "patch": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EmpleadoProducto PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "EmpleadoProducto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<EmpleadoProducto>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpleadoProductoPartial"
+              }
+            }
+          }
+        },
+        "operationId": "EmpleadoProductoController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "find",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of EmpleadoProducto model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmpleadoProductoWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpleadoProducto.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoProductoController.find"
+      }
+    },
+    "/empleados/count": {
+      "get": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "count",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Empleado.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Empleado>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoController.count"
+      }
+    },
+    "/empleados/{id}": {
+      "put": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Empleado PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empleado"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Empleado PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpleadoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoController.updateById"
+      },
+      "get": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "findById",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmpleadoWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empleado.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoController.findById"
+      },
+      "delete": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Empleado DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "EmpleadoController.deleteById"
+      }
+    },
+    "/empleados": {
+      "post": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "create",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empleado"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEmpleado"
+              }
+            }
+          }
+        },
+        "operationId": "EmpleadoController.create"
+      },
+      "patch": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Empleado.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Empleado>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpleadoPartial"
+              }
+            }
+          }
+        },
+        "operationId": "EmpleadoController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "EmpleadoController",
+        "x-operation-name": "find",
+        "tags": [
+          "EmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Empleado model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmpleadoWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empleado.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoController.find"
+      }
+    },
+    "/estado-productos/count": {
+      "get": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "count",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EstadoProducto model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "EstadoProducto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<EstadoProducto>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EstadoProductoController.count"
+      }
+    },
+    "/estado-productos/{id}": {
+      "put": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "EstadoProducto PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstadoProducto"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EstadoProductoController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "EstadoProducto PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstadoProductoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EstadoProductoController.updateById"
+      },
+      "get": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "findById",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EstadoProducto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoProductoWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoProducto.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EstadoProductoController.findById"
+      },
+      "delete": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "EstadoProducto DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "EstadoProductoController.deleteById"
+      }
+    },
+    "/estado-productos": {
+      "post": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "create",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EstadoProducto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoProducto"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEstadoProducto"
+              }
+            }
+          }
+        },
+        "operationId": "EstadoProductoController.create"
+      },
+      "patch": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "EstadoProducto PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "EstadoProducto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<EstadoProducto>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstadoProductoPartial"
+              }
+            }
+          }
+        },
+        "operationId": "EstadoProductoController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "EstadoProductoController",
+        "x-operation-name": "find",
+        "tags": [
+          "EstadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of EstadoProducto model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EstadoProductoWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoProducto.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EstadoProductoController.find"
+      }
+    },
+    "/fabricantes/count": {
+      "get": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "count",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Fabricante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Fabricante>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FabricanteController.count"
+      }
+    },
+    "/fabricantes/{id}": {
+      "put": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Fabricante PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fabricante"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "FabricanteController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Fabricante PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FabricantePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "FabricanteController.updateById"
+      },
+      "get": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "findById",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FabricanteWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fabricante.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FabricanteController.findById"
+      },
+      "delete": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Fabricante DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "FabricanteController.deleteById"
+      }
+    },
+    "/fabricantes": {
+      "post": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "create",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fabricante"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewFabricante"
+              }
+            }
+          }
+        },
+        "operationId": "FabricanteController.create"
+      },
+      "patch": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Fabricante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Fabricante>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FabricantePartial"
+              }
+            }
+          }
+        },
+        "operationId": "FabricanteController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "FabricanteController",
+        "x-operation-name": "find",
+        "tags": [
+          "FabricanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Fabricante model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FabricanteWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fabricante.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FabricanteController.find"
+      }
+    },
+    "/garantias/count": {
+      "get": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "count",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Garantia model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Garantia.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Garantia>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "GarantiaController.count"
+      }
+    },
+    "/garantias/{id}": {
+      "put": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Garantia PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Garantia"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "GarantiaController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Garantia PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GarantiaPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "GarantiaController.updateById"
+      },
+      "get": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "findById",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Garantia model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GarantiaWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Garantia.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "GarantiaController.findById"
+      },
+      "delete": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Garantia DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "GarantiaController.deleteById"
+      }
+    },
+    "/garantias": {
+      "post": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "create",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Garantia model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Garantia"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewGarantia"
+              }
+            }
+          }
+        },
+        "operationId": "GarantiaController.create"
+      },
+      "patch": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Garantia PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Garantia.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Garantia>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GarantiaPartial"
+              }
+            }
+          }
+        },
+        "operationId": "GarantiaController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "GarantiaController",
+        "x-operation-name": "find",
+        "tags": [
+          "GarantiaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Garantia model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GarantiaWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Garantia.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "GarantiaController.find"
+      }
+    },
+    "/partes/count": {
+      "get": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "count",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Partes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Partes>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PartesController.count"
+      }
+    },
+    "/partes/{id}": {
+      "put": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Partes PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partes"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PartesController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Partes PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartesPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PartesController.updateById"
+      },
+      "get": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "findById",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartesWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partes.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PartesController.findById"
+      },
+      "delete": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Partes DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PartesController.deleteById"
+      }
+    },
+    "/partes": {
+      "post": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "create",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPartes"
+              }
+            }
+          }
+        },
+        "operationId": "PartesController.create"
+      },
+      "patch": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Partes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Partes>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartesPartial"
+              }
+            }
+          }
+        },
+        "operationId": "PartesController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "PartesController",
+        "x-operation-name": "find",
+        "tags": [
+          "PartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Partes model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PartesWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partes.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PartesController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/productos/count": {
+      "get": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "count",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Producto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Producto>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoController.count"
+      }
+    },
+    "/productos/{id}": {
+      "put": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Producto PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Producto"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Producto PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoController.updateById"
+      },
+      "get": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "findById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductoWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoController.findById"
+      },
+      "delete": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Producto DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ProductoController.deleteById"
+      }
+    },
+    "/productos": {
+      "post": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "create",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewProducto"
+              }
+            }
+          }
+        },
+        "operationId": "ProductoController.create"
+      },
+      "patch": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Producto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Producto>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoPartial"
+              }
+            }
+          }
+        },
+        "operationId": "ProductoController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "find",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Producto model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductoWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Area": {
+        "title": "Area",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "descripcion",
+          "estado"
+        ],
+        "additionalProperties": false
+      },
+      "NewArea": {
+        "title": "NewArea",
+        "type": "object",
+        "description": "(tsType: Omit<Area, 'id'>, schemaOptions: { title: 'NewArea', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "descripcion",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Area, 'id'>"
+      },
+      "AreaWithRelations": {
+        "title": "AreaWithRelations",
+        "type": "object",
+        "description": "(tsType: AreaWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "descripcion",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "AreaWithRelations"
+      },
+      "AreaPartial": {
+        "title": "AreaPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Area>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Area>"
+      },
+      "Categorias": {
+        "title": "Categorias",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "estado"
+        ],
+        "additionalProperties": false
+      },
+      "NewCategorias": {
+        "title": "NewCategorias",
+        "type": "object",
+        "description": "(tsType: Omit<Categorias, 'id'>, schemaOptions: { title: 'NewCategorias', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Categorias, 'id'>"
+      },
+      "CategoriasWithRelations": {
+        "title": "CategoriasWithRelations",
+        "type": "object",
+        "description": "(tsType: CategoriasWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "CategoriasWithRelations"
+      },
+      "CategoriasPartial": {
+        "title": "CategoriasPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Categorias>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Categorias>"
+      },
+      "EmpleadoProducto": {
+        "title": "EmpleadoProducto",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaInicial": {
+            "type": "string"
+          },
+          "fechaFinal": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idProducto": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal",
+          "idEmpleado",
+          "idProducto"
+        ],
+        "additionalProperties": false
+      },
+      "NewEmpleadoProducto": {
+        "title": "NewEmpleadoProducto",
+        "type": "object",
+        "description": "(tsType: Omit<EmpleadoProducto, 'id'>, schemaOptions: { title: 'NewEmpleadoProducto', exclude: [ 'id' ] })",
+        "properties": {
+          "fechaInicial": {
+            "type": "string"
+          },
+          "fechaFinal": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idProducto": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal",
+          "idEmpleado",
+          "idProducto"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<EmpleadoProducto, 'id'>"
+      },
+      "EmpleadoProductoWithRelations": {
+        "title": "EmpleadoProductoWithRelations",
+        "type": "object",
+        "description": "(tsType: EmpleadoProductoWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaInicial": {
+            "type": "string"
+          },
+          "fechaFinal": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idProducto": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal",
+          "idEmpleado",
+          "idProducto"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "EmpleadoProductoWithRelations"
+      },
+      "EmpleadoProductoPartial": {
+        "title": "EmpleadoProductoPartial",
+        "type": "object",
+        "description": "(tsType: Partial<EmpleadoProducto>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaInicial": {
+            "type": "string"
+          },
+          "fechaFinal": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idProducto": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<EmpleadoProducto>"
+      },
+      "Empleado": {
+        "title": "Empleado",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono",
+          "estado"
+        ],
+        "additionalProperties": false
+      },
+      "NewEmpleado": {
+        "title": "NewEmpleado",
+        "type": "object",
+        "description": "(tsType: Omit<Empleado, 'id'>, schemaOptions: { title: 'NewEmpleado', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Empleado, 'id'>"
+      },
+      "EmpleadoWithRelations": {
+        "title": "EmpleadoWithRelations",
+        "type": "object",
+        "description": "(tsType: EmpleadoWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "EmpleadoWithRelations"
+      },
+      "EmpleadoPartial": {
+        "title": "EmpleadoPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Empleado>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Empleado>"
+      },
+      "EstadoProducto": {
+        "title": "EstadoProducto",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "observacion",
+          "estado"
+        ],
+        "additionalProperties": false
+      },
+      "NewEstadoProducto": {
+        "title": "NewEstadoProducto",
+        "type": "object",
+        "description": "(tsType: Omit<EstadoProducto, 'id'>, schemaOptions: { title: 'NewEstadoProducto', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "observacion",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<EstadoProducto, 'id'>"
+      },
+      "EstadoProductoWithRelations": {
+        "title": "EstadoProductoWithRelations",
+        "type": "object",
+        "description": "(tsType: EstadoProductoWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "observacion",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "EstadoProductoWithRelations"
+      },
+      "EstadoProductoPartial": {
+        "title": "EstadoProductoPartial",
+        "type": "object",
+        "description": "(tsType: Partial<EstadoProducto>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<EstadoProducto>"
+      },
+      "Fabricante": {
+        "title": "Fabricante",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "sitioWeb": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono"
+        ],
+        "additionalProperties": false
+      },
+      "NewFabricante": {
+        "title": "NewFabricante",
+        "type": "object",
+        "description": "(tsType: Omit<Fabricante, 'id'>, schemaOptions: { title: 'NewFabricante', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "sitioWeb": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Fabricante, 'id'>"
+      },
+      "FabricanteWithRelations": {
+        "title": "FabricanteWithRelations",
+        "type": "object",
+        "description": "(tsType: FabricanteWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "sitioWeb": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "FabricanteWithRelations"
+      },
+      "FabricantePartial": {
+        "title": "FabricantePartial",
+        "type": "object",
+        "description": "(tsType: Partial<Fabricante>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "sitioWeb": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Fabricante>"
+      },
+      "Garantia": {
+        "title": "Garantia",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fecha": {
+            "type": "string"
+          },
+          "porcentaje": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "cuota": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "fecha",
+          "estado"
+        ],
+        "additionalProperties": false
+      },
+      "NewGarantia": {
+        "title": "NewGarantia",
+        "type": "object",
+        "description": "(tsType: Omit<Garantia, 'id'>, schemaOptions: { title: 'NewGarantia', exclude: [ 'id' ] })",
+        "properties": {
+          "fecha": {
+            "type": "string"
+          },
+          "porcentaje": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "cuota": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "fecha",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Garantia, 'id'>"
+      },
+      "GarantiaWithRelations": {
+        "title": "GarantiaWithRelations",
+        "type": "object",
+        "description": "(tsType: GarantiaWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fecha": {
+            "type": "string"
+          },
+          "porcentaje": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "cuota": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "fecha",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "GarantiaWithRelations"
+      },
+      "GarantiaPartial": {
+        "title": "GarantiaPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Garantia>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fecha": {
+            "type": "string"
+          },
+          "porcentaje": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "cuota": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Garantia>"
+      },
+      "Partes": {
+        "title": "Partes",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "valor"
+        ],
+        "additionalProperties": false
+      },
+      "NewPartes": {
+        "title": "NewPartes",
+        "type": "object",
+        "description": "(tsType: Omit<Partes, 'id'>, schemaOptions: { title: 'NewPartes', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "valor"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Partes, 'id'>"
+      },
+      "PartesWithRelations": {
+        "title": "PartesWithRelations",
+        "type": "object",
+        "description": "(tsType: PartesWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre",
+          "valor"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "PartesWithRelations"
+      },
+      "PartesPartial": {
+        "title": "PartesPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Partes>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Partes>"
+      },
+      "Producto": {
+        "title": "Producto",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "idCategorias": {
+            "type": "number"
+          },
+          "idEstadoProducto": {
+            "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idArea": {
+            "type": "number"
+          },
+          "idGarantia": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idFabricante": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "number"
+          },
+          "vidaUtil": {
+            "type": "number"
+          },
+          "valorDepreciado": {
+            "type": "number"
+          },
+          "anioDepreciados": {
+            "type": "number"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "etiquetaServ": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idCategorias",
+          "idEstadoProducto",
+          "idEmpleadoProducto",
+          "idArea",
+          "idGarantia",
+          "idPartes",
+          "idFabricante",
+          "nombre",
+          "valor",
+          "vidaUtil",
+          "valorDepreciado",
+          "anioDepreciados"
+        ],
+        "additionalProperties": false
+      },
+      "NewProducto": {
+        "title": "NewProducto",
+        "type": "object",
+        "description": "(tsType: Omit<Producto, 'id'>, schemaOptions: { title: 'NewProducto', exclude: [ 'id' ] })",
+        "properties": {
+          "idCategorias": {
+            "type": "number"
+          },
+          "idEstadoProducto": {
+            "type": "number"
+          },
+          "idEmpleadoProducto": {
+            "type": "number"
+          },
+          "idArea": {
+            "type": "number"
+          },
+          "idGarantia": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idFabricante": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "number"
+          },
+          "vidaUtil": {
+            "type": "number"
+          },
+          "valorDepreciado": {
+            "type": "number"
+          },
+          "anioDepreciados": {
+            "type": "number"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "etiquetaServ": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idCategorias",
+          "idEstadoProducto",
+          "idEmpleadoProducto",
+          "idArea",
+          "idGarantia",
+          "idPartes",
+          "idFabricante",
+          "nombre",
+          "valor",
+          "vidaUtil",
+          "valorDepreciado",
+          "anioDepreciados"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Producto, 'id'>"
+      },
+      "ProductoWithRelations": {
+        "title": "ProductoWithRelations",
+        "type": "object",
+        "description": "(tsType: ProductoWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "idCategorias": {
+            "type": "number"
+          },
+          "idEstadoProducto": {
+            "type": "number"
+          },
+          "idEmpleadoProducto": {
+            "type": "number"
+          },
+          "idArea": {
+            "type": "number"
+          },
+          "idGarantia": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idFabricante": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "number"
+          },
+          "vidaUtil": {
+            "type": "number"
+          },
+          "valorDepreciado": {
+            "type": "number"
+          },
+          "anioDepreciados": {
+            "type": "number"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "etiquetaServ": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idCategorias",
+          "idEstadoProducto",
+          "idEmpleadoProducto",
+          "idArea",
+          "idGarantia",
+          "idPartes",
+          "idFabricante",
+          "nombre",
+          "valor",
+          "vidaUtil",
+          "valorDepreciado",
+          "anioDepreciados"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "ProductoWithRelations"
+      },
+      "ProductoPartial": {
+        "title": "ProductoPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Producto>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "idCategorias": {
+            "type": "number"
+          },
+          "idEstadoProducto": {
+            "type": "number"
+          },
+          "idEmpleadoProducto": {
+            "type": "number"
+          },
+          "idArea": {
+            "type": "number"
+          },
+          "idGarantia": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idFabricante": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "valor": {
+            "type": "number"
+          },
+          "vidaUtil": {
+            "type": "number"
+          },
+          "valorDepreciado": {
+            "type": "number"
+          },
+          "anioDepreciados": {
+            "type": "number"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "etiquetaServ": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Producto>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Categorias.Filter": {
+        "type": "object",
+        "title": "Categorias.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "descripcion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Categorias.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Categorias>"
+      },
+      "Categorias.Filter1": {
+        "type": "object",
+        "title": "Categorias.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Categorias.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "descripcion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Categorias.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Categorias>"
+      },
+      "Area.Filter": {
+        "type": "object",
+        "title": "Area.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "descripcion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Area.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Area>"
+      },
+      "Area.Filter1": {
+        "type": "object",
+        "title": "Area.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Area.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "descripcion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Area.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Area>"
+      },
+      "EmpleadoProducto.Filter": {
+        "type": "object",
+        "title": "EmpleadoProducto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "fechaInicial": {
+                    "type": "boolean"
+                  },
+                  "fechaFinal": {
+                    "type": "boolean"
+                  },
+                  "idEmpleado": {
+                    "type": "boolean"
+                  },
+                  "idProducto": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "fechaInicial",
+                    "fechaFinal",
+                    "idEmpleado",
+                    "idProducto"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "EmpleadoProducto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<EmpleadoProducto>"
+      },
+      "EmpleadoProducto.Filter1": {
+        "type": "object",
+        "title": "EmpleadoProducto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "EmpleadoProducto.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "fechaInicial": {
+                    "type": "boolean"
+                  },
+                  "fechaFinal": {
+                    "type": "boolean"
+                  },
+                  "idEmpleado": {
+                    "type": "boolean"
+                  },
+                  "idProducto": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "fechaInicial",
+                    "fechaFinal",
+                    "idEmpleado",
+                    "idProducto"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "EmpleadoProducto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<EmpleadoProducto>"
+      },
+      "Empleado.Filter": {
+        "type": "object",
+        "title": "Empleado.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "correo": {
+                    "type": "boolean"
+                  },
+                  "telefono": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "correo",
+                    "telefono",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Empleado.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Empleado>"
+      },
+      "Empleado.Filter1": {
+        "type": "object",
+        "title": "Empleado.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Empleado.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "correo": {
+                    "type": "boolean"
+                  },
+                  "telefono": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "correo",
+                    "telefono",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Empleado.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Empleado>"
+      },
+      "EstadoProducto.Filter": {
+        "type": "object",
+        "title": "EstadoProducto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "observacion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "observacion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "EstadoProducto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<EstadoProducto>"
+      },
+      "EstadoProducto.Filter1": {
+        "type": "object",
+        "title": "EstadoProducto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "EstadoProducto.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "observacion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "observacion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "EstadoProducto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<EstadoProducto>"
+      },
+      "Fabricante.Filter": {
+        "type": "object",
+        "title": "Fabricante.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "correo": {
+                    "type": "boolean"
+                  },
+                  "telefono": {
+                    "type": "boolean"
+                  },
+                  "sitioWeb": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "correo",
+                    "telefono",
+                    "sitioWeb",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Fabricante.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Fabricante>"
+      },
+      "Fabricante.Filter1": {
+        "type": "object",
+        "title": "Fabricante.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Fabricante.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "correo": {
+                    "type": "boolean"
+                  },
+                  "telefono": {
+                    "type": "boolean"
+                  },
+                  "sitioWeb": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "correo",
+                    "telefono",
+                    "sitioWeb",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Fabricante.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Fabricante>"
+      },
+      "Garantia.Filter": {
+        "type": "object",
+        "title": "Garantia.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "fecha": {
+                    "type": "boolean"
+                  },
+                  "porcentaje": {
+                    "type": "boolean"
+                  },
+                  "observacion": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "cuota": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "fecha",
+                    "porcentaje",
+                    "observacion",
+                    "descripcion",
+                    "cuota",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Garantia.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Garantia>"
+      },
+      "Garantia.Filter1": {
+        "type": "object",
+        "title": "Garantia.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Garantia.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "fecha": {
+                    "type": "boolean"
+                  },
+                  "porcentaje": {
+                    "type": "boolean"
+                  },
+                  "observacion": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "cuota": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "fecha",
+                    "porcentaje",
+                    "observacion",
+                    "descripcion",
+                    "cuota",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Garantia.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Garantia>"
+      },
+      "Partes.Filter": {
+        "type": "object",
+        "title": "Partes.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "tipoParte": {
+                    "type": "boolean"
+                  },
+                  "capacidad": {
+                    "type": "boolean"
+                  },
+                  "valor": {
+                    "type": "boolean"
+                  },
+                  "tecnologia": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "tipoParte",
+                    "capacidad",
+                    "valor",
+                    "tecnologia",
+                    "descripcion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Partes.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Partes>"
+      },
+      "Partes.Filter1": {
+        "type": "object",
+        "title": "Partes.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Partes.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "tipoParte": {
+                    "type": "boolean"
+                  },
+                  "capacidad": {
+                    "type": "boolean"
+                  },
+                  "valor": {
+                    "type": "boolean"
+                  },
+                  "tecnologia": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "tipoParte",
+                    "capacidad",
+                    "valor",
+                    "tecnologia",
+                    "descripcion",
+                    "estado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Partes.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Partes>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "Producto.Filter": {
+        "type": "object",
+        "title": "Producto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "idCategorias": {
+                    "type": "boolean"
+                  },
+                  "idEstadoProducto": {
+                    "type": "boolean"
+                  },
+                  "idEmpleadoProducto": {
+                    "type": "boolean"
+                  },
+                  "idArea": {
+                    "type": "boolean"
+                  },
+                  "idGarantia": {
+                    "type": "boolean"
+                  },
+                  "idPartes": {
+                    "type": "boolean"
+                  },
+                  "idFabricante": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "valor": {
+                    "type": "boolean"
+                  },
+                  "vidaUtil": {
+                    "type": "boolean"
+                  },
+                  "valorDepreciado": {
+                    "type": "boolean"
+                  },
+                  "anioDepreciados": {
+                    "type": "boolean"
+                  },
+                  "modelo": {
+                    "type": "boolean"
+                  },
+                  "etiquetaServ": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "idCategorias",
+                    "idEstadoProducto",
+                    "idEmpleadoProducto",
+                    "idArea",
+                    "idGarantia",
+                    "idPartes",
+                    "idFabricante",
+                    "nombre",
+                    "valor",
+                    "vidaUtil",
+                    "valorDepreciado",
+                    "anioDepreciados",
+                    "modelo",
+                    "etiquetaServ"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Producto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Producto>"
+      },
+      "Producto.Filter1": {
+        "type": "object",
+        "title": "Producto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Producto.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "idCategorias": {
+                    "type": "boolean"
+                  },
+                  "idEstadoProducto": {
+                    "type": "boolean"
+                  },
+                  "idEmpleadoProducto": {
+                    "type": "boolean"
+                  },
+                  "idArea": {
+                    "type": "boolean"
+                  },
+                  "idGarantia": {
+                    "type": "boolean"
+                  },
+                  "idPartes": {
+                    "type": "boolean"
+                  },
+                  "idFabricante": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "valor": {
+                    "type": "boolean"
+                  },
+                  "vidaUtil": {
+                    "type": "boolean"
+                  },
+                  "valorDepreciado": {
+                    "type": "boolean"
+                  },
+                  "anioDepreciados": {
+                    "type": "boolean"
+                  },
+                  "modelo": {
+                    "type": "boolean"
+                  },
+                  "etiquetaServ": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "idCategorias",
+                    "idEstadoProducto",
+                    "idEmpleadoProducto",
+                    "idArea",
+                    "idGarantia",
+                    "idPartes",
+                    "idFabricante",
+                    "nombre",
+                    "valor",
+                    "vidaUtil",
+                    "valorDepreciado",
+                    "anioDepreciados",
+                    "modelo",
+                    "etiquetaServ"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Producto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Producto>"
+      }
+    }
+  }
+}
