@@ -1,8 +1,7 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
+import {inject} from '@loopback/core';
+import {DefaultCrudRepository} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
-import {Empleado, EmpleadoRelations, Producto} from '../models';
-import {ProductoRepository} from './producto.repository';
+import {Empleado, EmpleadoRelations} from '../models';
 
 export class EmpleadoRepository extends DefaultCrudRepository<
   Empleado,
@@ -10,14 +9,10 @@ export class EmpleadoRepository extends DefaultCrudRepository<
   EmpleadoRelations
 > {
 
-  public readonly productos: HasManyRepositoryFactory<Producto, typeof Empleado.prototype.id>;
-
   constructor(
-    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('ProductoRepository') protected productoRepositoryGetter: Getter<ProductoRepository>,
+    @inject('datasources.cann') dataSource: CannDataSource,
   ) {
     super(Empleado, dataSource);
-    this.productos = this.createHasManyRepositoryFactoryFor('productos', productoRepositoryGetter,);
-    this.registerInclusionResolver('productos', this.productos.inclusionResolver);
 
   }
 }

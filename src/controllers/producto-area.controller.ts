@@ -33,6 +33,6 @@ export class ProductoAreaController {
   async getArea(
     @param.path.number('id') id: typeof Producto.prototype.id,
   ): Promise<Area> {
-    return this.productoRepository.area(id);
+    return this.productoRepository.Areas(id);
   }
 }

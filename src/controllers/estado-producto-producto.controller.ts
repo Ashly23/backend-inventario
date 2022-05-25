@@ -61,7 +61,7 @@ export class EstadoProductoProductoController {
           schema: getModelSchemaRef(Producto, {
             title: 'NewProductoInEstadoProducto',
             exclude: ['id'],
-            optional: ['estadoProductoId']
+            optional: ['idEstadoProducto']
           }),
         },
       },

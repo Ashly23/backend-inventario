@@ -63,7 +63,7 @@ export class Partes extends Entity {
   })
   estado: boolean;
 
-  @hasMany(() => Producto)
+  @hasMany(() => Producto, {keyTo: 'idPartes'})
   productos: Producto[];
   // Define well-known properties here
 

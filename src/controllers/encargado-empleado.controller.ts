@@ -7,21 +7,21 @@ import {
   getModelSchemaRef,
 } from '@loopback/rest';
 import {
-  Producto,
+  Encargado,
   Empleado,
 } from '../models';
-import {ProductoRepository} from '../repositories';
+import {EncargadoRepository} from '../repositories';
 
-export class ProductoEmpleadoController {
+export class EncargadoEmpleadoController {
   constructor(
-    @repository(ProductoRepository)
-    public productoRepository: ProductoRepository,
+    @repository(EncargadoRepository)
+    public encargadoRepository: EncargadoRepository,
   ) { }
 
-  @get('/productos/{id}/empleado', {
+  @get('/encargados/{id}/empleado', {
     responses: {
       '200': {
-        description: 'Empleado belonging to Producto',
+        description: 'Empleado belonging to Encargado',
         content: {
           'application/json': {
             schema: {type: 'array', items: getModelSchemaRef(Empleado)},
@@ -31,8 +31,8 @@ export class ProductoEmpleadoController {
     },
   })
   async getEmpleado(
-    @param.path.number('id') id: typeof Producto.prototype.id,
+    @param.path.number('id') id: typeof Encargado.prototype.id,
   ): Promise<Empleado> {
-    return this.productoRepository.empleado(id);
+    return this.encargadoRepository.Empleados(id);
   }
 }

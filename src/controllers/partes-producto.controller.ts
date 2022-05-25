@@ -61,7 +61,7 @@ export class PartesProductoController {
           schema: getModelSchemaRef(Producto, {
             title: 'NewProductoInPartes',
             exclude: ['id'],
-            optional: ['partesId']
+            optional: ['idPartes']
           }),
         },
       },

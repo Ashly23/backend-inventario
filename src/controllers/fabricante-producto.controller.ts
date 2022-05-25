@@ -61,7 +61,7 @@ export class FabricanteProductoController {
           schema: getModelSchemaRef(Producto, {
             title: 'NewProductoInFabricante',
             exclude: ['id'],
-            optional: ['fabricanteId']
+            optional: ['idFabricante']
           }),
         },
       },

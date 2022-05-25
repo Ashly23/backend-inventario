@@ -1,12 +1,14 @@
 import {
-  repository
+  repository,
 } from '@loopback/repository';
 import {
+  param,
   get,
-  getModelSchemaRef, param
+  getModelSchemaRef,
 } from '@loopback/rest';
 import {
-  Categorias, Producto
+  Producto,
+  Categorias,
 } from '../models';
 import {ProductoRepository} from '../repositories';
 
@@ -31,6 +33,6 @@ export class ProductoCategoriasController {
   async getCategorias(
     @param.path.number('id') id: typeof Producto.prototype.id,
   ): Promise<Categorias> {
-    return this.productoRepository.categorias(id);
+    return this.productoRepository.Categorias(id);
   }
 }

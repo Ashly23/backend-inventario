@@ -61,7 +61,7 @@ export class CategoriasProductoController {
           schema: getModelSchemaRef(Producto, {
             title: 'NewProductoInCategorias',
             exclude: ['id'],
-            optional: ['categoriasId']
+            optional: ['idCategorias']
           }),
         },
       },

@@ -1,12 +1,12 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
+import {Getter, inject} from '@loopback/core';
+import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
-import {Producto, ProductoRelations, Area, Categorias, Empleado, Fabricante, EstadoProducto, Partes} from '../models';
+import {Area, Categorias, EstadoProducto, Fabricante, Garantia, Partes, Producto, ProductoRelations} from '../models';
 import {AreaRepository} from './area.repository';
 import {CategoriasRepository} from './categorias.repository';
-import {EmpleadoRepository} from './empleado.repository';
-import {FabricanteRepository} from './fabricante.repository';
 import {EstadoProductoRepository} from './estado-producto.repository';
+import {FabricanteRepository} from './fabricante.repository';
+import {GarantiaRepository} from './garantia.repository';
 import {PartesRepository} from './partes.repository';
 
 export class ProductoRepository extends DefaultCrudRepository<
@@ -15,34 +15,34 @@ export class ProductoRepository extends DefaultCrudRepository<
   ProductoRelations
 > {
 
-  public readonly area: BelongsToAccessor<Area, typeof Producto.prototype.id>;
+  public readonly Areas: BelongsToAccessor<Area, typeof Producto.prototype.id>;
 
-  public readonly categorias: BelongsToAccessor<Categorias, typeof Producto.prototype.id>;
+  public readonly Categorias: BelongsToAccessor<Categorias, typeof Producto.prototype.id>;
 
-  public readonly empleado: BelongsToAccessor<Empleado, typeof Producto.prototype.id>;
+  public readonly EstadoProductos: BelongsToAccessor<EstadoProducto, typeof Producto.prototype.id>;
 
-  public readonly fabricante: BelongsToAccessor<Fabricante, typeof Producto.prototype.id>;
+  public readonly Fabricantes: BelongsToAccessor<Fabricante, typeof Producto.prototype.id>;
 
-  public readonly estadoProducto: BelongsToAccessor<EstadoProducto, typeof Producto.prototype.id>;
+  public readonly Garantias: BelongsToAccessor<Garantia, typeof Producto.prototype.id>;
 
-  public readonly partes: BelongsToAccessor<Partes, typeof Producto.prototype.id>;
+  public readonly Parte: BelongsToAccessor<Partes, typeof Producto.prototype.id>;
 
   constructor(
-    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('AreaRepository') protected areaRepositoryGetter: Getter<AreaRepository>, @repository.getter('CategoriasRepository') protected categoriasRepositoryGetter: Getter<CategoriasRepository>, @repository.getter('EmpleadoRepository') protected empleadoRepositoryGetter: Getter<EmpleadoRepository>, @repository.getter('FabricanteRepository') protected fabricanteRepositoryGetter: Getter<FabricanteRepository>, @repository.getter('EstadoProductoRepository') protected estadoProductoRepositoryGetter: Getter<EstadoProductoRepository>, @repository.getter('PartesRepository') protected partesRepositoryGetter: Getter<PartesRepository>,
+    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('AreaRepository') protected areaRepositoryGetter: Getter<AreaRepository>, @repository.getter('CategoriasRepository') protected categoriasRepositoryGetter: Getter<CategoriasRepository>, @repository.getter('FabricanteRepository') protected fabricanteRepositoryGetter: Getter<FabricanteRepository>, @repository.getter('EstadoProductoRepository') protected estadoProductoRepositoryGetter: Getter<EstadoProductoRepository>, @repository.getter('GarantiaRepository') protected garantiaRepositoryGetter: Getter<GarantiaRepository>, @repository.getter('PartesRepository') protected partesRepositoryGetter: Getter<PartesRepository>,
   ) {
     super(Producto, dataSource);
-    this.partes = this.createBelongsToAccessorFor('partes', partesRepositoryGetter,);
-    this.registerInclusionResolver('partes', this.partes.inclusionResolver);
-    this.estadoProducto = this.createBelongsToAccessorFor('estadoProducto', estadoProductoRepositoryGetter,);
-    this.registerInclusionResolver('estadoProducto', this.estadoProducto.inclusionResolver);
-    this.fabricante = this.createBelongsToAccessorFor('fabricante', fabricanteRepositoryGetter,);
-    this.registerInclusionResolver('fabricante', this.fabricante.inclusionResolver);
-    this.empleado = this.createBelongsToAccessorFor('empleado', empleadoRepositoryGetter,);
-    this.registerInclusionResolver('empleado', this.empleado.inclusionResolver);
-    this.categorias = this.createBelongsToAccessorFor('categorias', categoriasRepositoryGetter,);
-    this.registerInclusionResolver('categorias', this.categorias.inclusionResolver);
-    this.area = this.createBelongsToAccessorFor('area', areaRepositoryGetter,);
-    this.registerInclusionResolver('area', this.area.inclusionResolver);
+    this.Parte = this.createBelongsToAccessorFor('Parte', partesRepositoryGetter,);
+    this.registerInclusionResolver('Parte', this.Parte.inclusionResolver);
+    this.Garantias = this.createBelongsToAccessorFor('Garantias', garantiaRepositoryGetter,);
+    this.registerInclusionResolver('Garantias', this.Garantias.inclusionResolver);
+    this.Fabricantes = this.createBelongsToAccessorFor('Fabricantes', fabricanteRepositoryGetter,);
+    this.registerInclusionResolver('Fabricantes', this.Fabricantes.inclusionResolver);
+    this.EstadoProductos = this.createBelongsToAccessorFor('EstadoProductos', estadoProductoRepositoryGetter,);
+    this.registerInclusionResolver('EstadoProductos', this.EstadoProductos.inclusionResolver);
+    this.Categorias = this.createBelongsToAccessorFor('Categorias', categoriasRepositoryGetter,);
+    this.registerInclusionResolver('Categorias', this.Categorias.inclusionResolver);
+    this.Areas = this.createBelongsToAccessorFor('Areas', areaRepositoryGetter,);
+    this.registerInclusionResolver('Areas', this.Areas.inclusionResolver);
 
   }
 }

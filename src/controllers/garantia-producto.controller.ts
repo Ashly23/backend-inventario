@@ -16,20 +16,20 @@ import {
   requestBody,
 } from '@loopback/rest';
 import {
-  Empleado,
+  Garantia,
   Producto,
 } from '../models';
-import {EmpleadoRepository} from '../repositories';
+import {GarantiaRepository} from '../repositories';
 
-export class EmpleadoProductoController {
+export class GarantiaProductoController {
   constructor(
-    @repository(EmpleadoRepository) protected empleadoRepository: EmpleadoRepository,
+    @repository(GarantiaRepository) protected garantiaRepository: GarantiaRepository,
   ) { }
 
-  @get('/empleados/{id}/productos', {
+  @get('/garantias/{id}/productos', {
     responses: {
       '200': {
-        description: 'Array of Empleado has many Producto',
+        description: 'Array of Garantia has many Producto',
         content: {
           'application/json': {
             schema: {type: 'array', items: getModelSchemaRef(Producto)},
@@ -42,38 +42,38 @@ export class EmpleadoProductoController {
     @param.path.number('id') id: number,
     @param.query.object('filter') filter?: Filter<Producto>,
   ): Promise<Producto[]> {
-    return this.empleadoRepository.productos(id).find(filter);
+    return this.garantiaRepository.productos(id).find(filter);
   }
 
-  @post('/empleados/{id}/productos', {
+  @post('/garantias/{id}/productos', {
     responses: {
       '200': {
-        description: 'Empleado model instance',
+        description: 'Garantia model instance',
         content: {'application/json': {schema: getModelSchemaRef(Producto)}},
       },
     },
   })
   async create(
-    @param.path.number('id') id: typeof Empleado.prototype.id,
+    @param.path.number('id') id: typeof Garantia.prototype.id,
     @requestBody({
       content: {
         'application/json': {
           schema: getModelSchemaRef(Producto, {
-            title: 'NewProductoInEmpleado',
+            title: 'NewProductoInGarantia',
             exclude: ['id'],
-            optional: ['empleadoId']
+            optional: ['idGarantia']
           }),
         },
       },
     }) producto: Omit<Producto, 'id'>,
   ): Promise<Producto> {
-    return this.empleadoRepository.productos(id).create(producto);
+    return this.garantiaRepository.productos(id).create(producto);
   }
 
-  @patch('/empleados/{id}/productos', {
+  @patch('/garantias/{id}/productos', {
     responses: {
       '200': {
-        description: 'Empleado.Producto PATCH success count',
+        description: 'Garantia.Producto PATCH success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -90,13 +90,13 @@ export class EmpleadoProductoController {
     producto: Partial<Producto>,
     @param.query.object('where', getWhereSchemaFor(Producto)) where?: Where<Producto>,
   ): Promise<Count> {
-    return this.empleadoRepository.productos(id).patch(producto, where);
+    return this.garantiaRepository.productos(id).patch(producto, where);
   }
 
-  @del('/empleados/{id}/productos', {
+  @del('/garantias/{id}/productos', {
     responses: {
       '200': {
-        description: 'Empleado.Producto DELETE success count',
+        description: 'Garantia.Producto DELETE success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -105,6 +105,6 @@ export class EmpleadoProductoController {
     @param.path.number('id') id: number,
     @param.query.object('where', getWhereSchemaFor(Producto)) where?: Where<Producto>,
   ): Promise<Count> {
-    return this.empleadoRepository.productos(id).delete(where);
+    return this.garantiaRepository.productos(id).delete(where);
   }
 }

@@ -35,7 +35,7 @@ export class Categorias extends Entity {
   })
   estado: boolean;
 
-  @hasMany(() => Producto)
+  @hasMany(() => Producto, {keyTo: 'idCategorias'})
   productos: Producto[];
   // Define well-known properties here
 

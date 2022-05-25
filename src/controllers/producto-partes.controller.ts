@@ -33,6 +33,6 @@ export class ProductoPartesController {
   async getPartes(
     @param.path.number('id') id: typeof Producto.prototype.id,
   ): Promise<Partes> {
-    return this.productoRepository.partes(id);
+    return this.productoRepository.Parte(id);
   }
 }

@@ -61,7 +61,7 @@ export class AreaProductoController {
           schema: getModelSchemaRef(Producto, {
             title: 'NewProductoInArea',
             exclude: ['id'],
-            optional: ['areaId']
+            optional: ['idArea']
           }),
         },
       },

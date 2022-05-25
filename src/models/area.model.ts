@@ -36,7 +36,7 @@ export class Area extends Entity {
   })
   estado: boolean;
 
-  @hasMany(() => Producto)
+  @hasMany(() => Producto, {keyTo: 'idArea'})
   productos: Producto[];
   // Define well-known properties here
 

@@ -1,9 +1,10 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
 import {Area} from './area.model';
 import {Categorias} from './categorias.model';
-import {Empleado} from './empleado.model';
-import {Fabricante} from './fabricante.model';
+import {Encargado} from './encargado.model';
 import {EstadoProducto} from './estado-producto.model';
+import {Fabricante} from './fabricante.model';
+import {Garantia} from './garantia.model';
 import {Partes} from './partes.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Producto'}}})
@@ -17,59 +18,6 @@ export class Producto extends Entity {
     mssql: {columnName: 'id', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'YES'},
   })
   id?: number;
-
-  @property({
-    type: 'number',
-    required: true,
-    precision: 10,
-    scale: 0,
-    mssql: {columnName: 'idCategorias', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'NO'},
-  })
-  idCategorias: number;
-
-  @property({
-    type: 'number',
-    required: true,
-    precision: 10,
-    scale: 0,
-    mssql: {columnName: 'idEstadoProducto', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'NO'},
-  })
-  idEstadoProducto: number;
-  @property({
-    type: 'number',
-    required: true,
-    precision: 10,
-    scale: 0,
-    mssql: {columnName: 'idGarantia', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'NO'},
-  })
-  idGarantia: number;
-
-  @property({
-    type: 'number',
-    required: true,
-    precision: 10,
-    scale: 0,
-    mssql: {columnName: 'idPartes', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'NO'},
-  })
-  idPartes: number;
-
-  @property({
-    type: 'number',
-    required: true,
-    precision: 10,
-    scale: 0,
-    mssql: {columnName: 'idFabricante', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'NO'},
-  })
-  idFabricante: number;
-
-  @property({
-    type: 'number',
-    required: true,
-    precision: 10,
-    scale: 0,
-    mssql: {columnName: 'idEmpleado', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'NO'},
-  })
-  idEmpleado: number;
 
   @property({
     type: 'string',
@@ -125,23 +73,27 @@ export class Producto extends Entity {
   })
   etiquetaServ?: string;
 
-  @belongsTo(() => Area)
-  areaId: number;
 
-  @belongsTo(() => Categorias)
-  categoriasId: number;
+  @belongsTo(() => Area, {name: 'Areas'})
+  idArea: number;
 
-  @belongsTo(() => Empleado)
-  empleadoId: number;
+  @belongsTo(() => Categorias, {name: 'Categorias'})
+  idCategorias: number;
 
-  @belongsTo(() => Fabricante)
-  fabricanteId: number;
+  @belongsTo(() => EstadoProducto, {name: 'EstadoProductos'})
+  idEstadoProducto: number;
 
-  @belongsTo(() => EstadoProducto)
-  estadoProductoId: number;
+  @belongsTo(() => Fabricante, {name: 'Fabricantes'})
+  idFabricante: number;
 
-  @belongsTo(() => Partes)
-  partesId: number;
+  @belongsTo(() => Garantia, {name: 'Garantias'})
+  idGarantia: number;
+
+  @belongsTo(() => Partes, {name: 'Parte'})
+  idPartes: number;
+
+  @hasMany(() => Encargado, {keyTo: 'idProducto'})
+  encargados: Encargado[];
   // Define well-known properties here
 
   // Indexer property to allow additional data

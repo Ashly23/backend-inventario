@@ -7,4 +7,4 @@ export * from './garantia.model';
 export * from './partes.model';
 export * from './producto.model';
 
-export * from './empleado-producto.model';
+export * from './encargado.model';
