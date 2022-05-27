@@ -94,6 +94,7 @@ export class Producto extends Entity {
 
   @hasMany(() => Encargado, {keyTo: 'idProducto'})
   encargados: Encargado[];
+
   // Define well-known properties here
 
   // Indexer property to allow additional data

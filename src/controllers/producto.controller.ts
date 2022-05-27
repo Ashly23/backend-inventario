@@ -38,7 +38,7 @@ export class ProductoController {
     })
     producto: Omit<Producto, 'id'>,
   ): Promise<Producto> {
-    console.log(producto)
+    // console.log(producto)
     return this.productoRepository.create(producto);
   }
 

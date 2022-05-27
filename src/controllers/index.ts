@@ -3,6 +3,7 @@ export * from './area.controller';
 export * from './categoria.controller';
 export * from './categorias-producto.controller';
 export * from './empleado.controller';
+export * from './encargado.controller';
 export * from './estado-producto-producto.controller';
 export * from './estado-producto.controller';
 export * from './fabricante-producto.controller';
@@ -19,8 +20,5 @@ export * from './producto-fabricante.controller';
 export * from './producto-garantia.controller';
 export * from './producto-partes.controller';
 export * from './producto.controller';
-
-
-export * from './encargado.controller';
-export * from './encargado-empleado.controller';
 export * from './encargado-producto.controller';
+export * from './encargado-empleado.controller';

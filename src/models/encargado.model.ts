@@ -30,12 +30,12 @@ export class Encargado extends Entity {
   })
   fechaFinal: string;
 
+  @belongsTo(() => Producto, {name: 'Productos'})
+  idProducto: number;
 
   @belongsTo(() => Empleado, {name: 'Empleados'})
   idEmpleado: number;
 
-  @belongsTo(() => Producto, {name: 'Productos'})
-  idProducto: number;
   // Define well-known properties here
 
   // Indexer property to allow additional data
