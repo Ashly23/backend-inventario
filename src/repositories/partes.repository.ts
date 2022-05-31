@@ -1,5 +1,5 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
+import {Getter, inject} from '@loopback/core';
+import {DefaultCrudRepository, HasManyRepositoryFactory, repository} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
 import {Partes, PartesRelations, Producto} from '../models';
 import {ProductoRepository} from './producto.repository';

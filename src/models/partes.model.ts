@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Producto} from './producto.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Partes'}}})
@@ -37,25 +37,10 @@ export class Partes extends Entity {
 
   @property({
     type: 'string',
-    required: true,
-    length: 50,
-    mssql: {columnName: 'valor', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
-  })
-  valor: string;
-
-  @property({
-    type: 'string',
     length: 50,
     mssql: {columnName: 'tecnologia', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   tecnologia?: string;
-
-  @property({
-    type: 'string',
-    length: 100,
-    mssql: {columnName: 'descripcion', dataType: 'nchar', dataLength: 100, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  descripcion?: string;
 
   @property({
     type: 'boolean',

@@ -83,17 +83,17 @@ export class Producto extends Entity {
   @belongsTo(() => EstadoProducto, {name: 'EstadoProductos'})
   idEstadoProducto: number;
 
-  @belongsTo(() => Fabricante, {name: 'Fabricantes'})
-  idFabricante: number;
+  @hasMany(() => Fabricante, {keyTo: 'idProducto'})
+  fabricantes: Fabricante[];
 
-  @belongsTo(() => Garantia, {name: 'Garantias'})
-  idGarantia: number;
-
-  @belongsTo(() => Partes, {name: 'Parte'})
-  idPartes: number;
+  @hasMany(() => Garantia, {keyTo: 'idProducto'})
+  garantias: Garantia[];
 
   @hasMany(() => Encargado, {keyTo: 'idProducto'})
   encargados: Encargado[];
+
+  @belongsTo(() => Partes, {name: 'Parte'})
+  idPartes: number;
 
   // Define well-known properties here
 

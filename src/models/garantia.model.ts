@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {belongsTo, Entity, model, property} from '@loopback/repository';
 import {Producto} from './producto.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Garantia'}}})
@@ -37,13 +37,6 @@ export class Garantia extends Entity {
 
   @property({
     type: 'string',
-    length: 200,
-    mssql: {columnName: 'descripcion', dataType: 'nchar', dataLength: 200, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  descripcion?: string;
-
-  @property({
-    type: 'string',
     length: 100,
     mssql: {columnName: 'cuota', dataType: 'nchar', dataLength: 100, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
@@ -56,8 +49,9 @@ export class Garantia extends Entity {
   })
   estado: boolean;
 
-  @hasMany(() => Producto, {keyTo: 'idGarantia'})
-  productos: Producto[];
+  @belongsTo(() => Producto, {name: 'Productos'})
+  idProducto: number;
+
   // Define well-known properties here
 
   // Indexer property to allow additional data
