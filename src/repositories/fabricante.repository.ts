@@ -1,8 +1,9 @@
-import {Getter, inject} from '@loopback/core';
-import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
+import {inject, Getter} from '@loopback/core';
+import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
-import {Fabricante, FabricanteRelations, Producto} from '../models';
+import {Fabricante, FabricanteRelations, Producto, Partes} from '../models';
 import {ProductoRepository} from './producto.repository';
+import {PartesRepository} from './partes.repository';
 
 export class FabricanteRepository extends DefaultCrudRepository<
   Fabricante,
@@ -10,14 +11,18 @@ export class FabricanteRepository extends DefaultCrudRepository<
   FabricanteRelations
 > {
 
-  public readonly Productos: BelongsToAccessor<Producto, typeof Fabricante.prototype.id>;
+  public readonly productos: HasManyRepositoryFactory<Producto, typeof Fabricante.prototype.id>;
+
+  public readonly partes: HasManyRepositoryFactory<Partes, typeof Fabricante.prototype.id>;
 
   constructor(
-    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('ProductoRepository') protected productoRepositoryGetter: Getter<ProductoRepository>,
+    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('ProductoRepository') protected productoRepositoryGetter: Getter<ProductoRepository>, @repository.getter('PartesRepository') protected partesRepositoryGetter: Getter<PartesRepository>,
   ) {
     super(Fabricante, dataSource);
-    this.Productos = this.createBelongsToAccessorFor('Productos', productoRepositoryGetter,);
-    this.registerInclusionResolver('Productos', this.Productos.inclusionResolver);
+    this.partes = this.createHasManyRepositoryFactoryFor('partes', partesRepositoryGetter,);
+    this.registerInclusionResolver('partes', this.partes.inclusionResolver);
+    this.productos = this.createHasManyRepositoryFactoryFor('productos', productoRepositoryGetter,);
+    this.registerInclusionResolver('productos', this.productos.inclusionResolver);
 
   }
 }

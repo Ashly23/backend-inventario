@@ -11,7 +11,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Encargado} from '../models';
+import {Encargado, EncargadoWithRelations} from '../models';
 import {EncargadoRepository} from '../repositories';
 
 export class EncargadoController {
@@ -99,7 +99,7 @@ export class EncargadoController {
     },
   })
   async findById(
-    @param.path.string('id') id: number,
+    @param.path.number('id') id: number,
     @param.filter(Encargado, {exclude: 'where'}) filter?: FilterExcludingWhere<Encargado>
   ): Promise<Encargado> {
     return this.encargadoRepository.findById(id, filter);
@@ -110,7 +110,7 @@ export class EncargadoController {
     description: 'Encargado PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: number,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -119,8 +119,9 @@ export class EncargadoController {
       },
     })
     encargado: Encargado,
-  ): Promise<void> {
+  ): Promise<EncargadoWithRelations> {
     await this.encargadoRepository.updateById(id, encargado);
+    return this.encargadoRepository.findById(id, {"include": [{"relation": "Productos"}, {"relation": "Empleados"}]});
   }
 
   @put('/encargados/{id}')
@@ -128,7 +129,7 @@ export class EncargadoController {
     description: 'Encargado PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: number,
+    @param.path.number('id') id: number,
     @requestBody() encargado: Encargado,
   ): Promise<void> {
     await this.encargadoRepository.replaceById(id, encargado);
@@ -138,7 +139,7 @@ export class EncargadoController {
   @response(204, {
     description: 'Encargado DELETE success',
   })
-  async deleteById(@param.path.string('id') id: number): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.encargadoRepository.deleteById(id);
   }
 }

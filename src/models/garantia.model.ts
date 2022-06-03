@@ -14,15 +14,15 @@ export class Garantia extends Entity {
   id?: number;
 
   @property({
-    type: 'string',
+    type: 'Date',
     required: true,
     length: 50,
-    mssql: {columnName: 'fecha', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'fecha', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
-  fecha: string;
+  fecha: Date;
 
   @property({
-    type: 'string',
+    type: 'Date',
     length: 50,
     mssql: {columnName: 'porcentaje', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })

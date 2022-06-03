@@ -1,36 +1,38 @@
 import {
-  repository
+  repository,
 } from '@loopback/repository';
 import {
+  param,
   get,
-  getModelSchemaRef, param
+  getModelSchemaRef,
 } from '@loopback/rest';
 import {
-  Partes, Producto
+  Producto,
+  Fabricante,
 } from '../models';
 import {ProductoRepository} from '../repositories';
 
-export class ProductoPartesController {
+export class ProductoFabricanteController {
   constructor(
     @repository(ProductoRepository)
     public productoRepository: ProductoRepository,
   ) { }
 
-  @get('/productos/{id}/partes', {
+  @get('/productos/{id}/fabricante', {
     responses: {
       '200': {
-        description: 'Partes belonging to Producto',
+        description: 'Fabricante belonging to Producto',
         content: {
           'application/json': {
-            schema: {type: 'array', items: getModelSchemaRef(Partes)},
+            schema: {type: 'array', items: getModelSchemaRef(Fabricante)},
           },
         },
       },
     },
   })
-  async getPartes(
+  async getFabricante(
     @param.path.number('id') id: typeof Producto.prototype.id,
-  ): Promise<Partes> {
-    return this.productoRepository.Parte(id);
+  ): Promise<Fabricante> {
+    return this.productoRepository.Fabricantes(id);
   }
 }

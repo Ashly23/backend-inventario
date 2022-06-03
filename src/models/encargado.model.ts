@@ -15,20 +15,20 @@ export class Encargado extends Entity {
   id?: number;
 
   @property({
-    type: 'string',
+    type: 'Date',
     required: true,
     length: 50,
-    mssql: {columnName: 'fechaInicial', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'fechaInicial', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
-  fechaInicial: string;
+  fechaInicial: Date;
 
   @property({
-    type: 'string',
+    type: 'Date',
     required: true,
     length: 50,
-    mssql: {columnName: 'fechaFinal', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'fechaFinal', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
-  fechaFinal: string;
+  fechaFinal: Date;
 
   @belongsTo(() => Producto, {name: 'Productos'})
   idProducto: number;

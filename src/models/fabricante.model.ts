@@ -1,4 +1,5 @@
-import {belongsTo, Entity, model, property} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
+import {Partes} from './partes.model';
 import {Producto} from './producto.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Fabricante'}}})
@@ -49,8 +50,11 @@ export class Fabricante extends Entity {
   })
   estado: boolean;
 
-  @belongsTo(() => Producto, {name: 'Productos'})
-  idProducto: number;
+  @hasMany(() => Producto, {keyTo: 'idFabricante'})
+  productos: Producto[];
+
+  @hasMany(() => Partes, {keyTo: 'idFabricante'})
+  partes: Partes[];
 
   // Define well-known properties here
 

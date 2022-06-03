@@ -109,6 +109,7 @@ export class FabricanteController {
   @response(204, {
     description: 'Fabricante PATCH success',
   })
+  //nn
   async updateById(
     @param.path.number('id') id: number,
     @requestBody({
@@ -119,8 +120,12 @@ export class FabricanteController {
       },
     })
     fabricante: Fabricante,
-  ): Promise<void> {
+  ): Promise<any> {
+    let filter = {"include": [{"relation": "Productos"}]}
     await this.fabricanteRepository.updateById(id, fabricante);
+    let item = this.fabricanteRepository.findById(id, filter);
+    console.log(item)
+    return item
   }
 
   @put('/fabricantes/{id}')

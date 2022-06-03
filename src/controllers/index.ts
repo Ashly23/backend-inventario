@@ -18,4 +18,7 @@ export * from './producto-area.controller';
 export * from './producto-categorias.controller';
 export * from './producto-estado-producto.controller';
 export * from './producto.controller';
-
+export * from './fabricante-producto.controller';
+export * from './producto-fabricante.controller';
+export * from './fabricante-partes.controller';
+export * from './partes-fabricante.controller';

@@ -2188,6 +2188,191 @@
         "operationId": "FabricanteController.count"
       }
     },
+    "/fabricantes/{id}/partes": {
+      "post": {
+        "x-controller-name": "FabricantePartesController",
+        "x-operation-name": "create",
+        "tags": [
+          "FabricantePartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partes"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPartesInFabricante"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "FabricantePartesController.create"
+      },
+      "patch": {
+        "x-controller-name": "FabricantePartesController",
+        "x-operation-name": "patch",
+        "tags": [
+          "FabricantePartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante.Partes PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Partes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Partes>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartesPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "FabricantePartesController.patch"
+      },
+      "get": {
+        "x-controller-name": "FabricantePartesController",
+        "x-operation-name": "find",
+        "tags": [
+          "FabricantePartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Fabricante has many Partes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Partes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FabricantePartesController.find"
+      },
+      "delete": {
+        "x-controller-name": "FabricantePartesController",
+        "x-operation-name": "delete",
+        "tags": [
+          "FabricantePartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fabricante.Partes DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Partes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Partes>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FabricantePartesController.delete"
+      }
+    },
     "/fabricantes/{id}/productos": {
       "post": {
         "x-controller-name": "FabricanteProductoController",
@@ -2676,110 +2861,16 @@
         "operationId": "GarantiaController.count"
       }
     },
-    "/garantias/{id}/productos": {
-      "post": {
-        "x-controller-name": "GarantiaProductoController",
-        "x-operation-name": "create",
-        "tags": [
-          "GarantiaProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Garantia model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Producto"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewProductoInGarantia"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "GarantiaProductoController.create"
-      },
-      "patch": {
-        "x-controller-name": "GarantiaProductoController",
-        "x-operation-name": "patch",
-        "tags": [
-          "GarantiaProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Garantia.Producto PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/loopback.Count"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Producto.WhereFilter",
-                  "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<Producto>"
-                }
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoPartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "GarantiaProductoController.patch"
-      },
+    "/garantias/{id}/producto": {
       "get": {
         "x-controller-name": "GarantiaProductoController",
-        "x-operation-name": "find",
+        "x-operation-name": "getProducto",
         "tags": [
           "GarantiaProductoController"
         ],
         "responses": {
           "200": {
-            "description": "Array of Garantia has many Producto",
+            "description": "Producto belonging to Garantia",
             "content": {
               "application/json": {
                 "schema": {
@@ -2800,65 +2891,9 @@
               "type": "number"
             },
             "required": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              }
-            }
           }
         ],
-        "operationId": "GarantiaProductoController.find"
-      },
-      "delete": {
-        "x-controller-name": "GarantiaProductoController",
-        "x-operation-name": "delete",
-        "tags": [
-          "GarantiaProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Garantia.Producto DELETE success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/loopback.Count"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Producto.WhereFilter",
-                  "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<Producto>"
-                }
-              }
-            }
-          }
-        ],
-        "operationId": "GarantiaProductoController.delete"
+        "operationId": "GarantiaProductoController.getProducto"
       }
     },
     "/garantias/{id}": {
@@ -3164,116 +3199,22 @@
         "operationId": "PartesController.count"
       }
     },
-    "/partes/{id}/productos": {
-      "post": {
-        "x-controller-name": "PartesProductoController",
-        "x-operation-name": "create",
-        "tags": [
-          "PartesProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Partes model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Producto"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewProductoInPartes"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "PartesProductoController.create"
-      },
-      "patch": {
-        "x-controller-name": "PartesProductoController",
-        "x-operation-name": "patch",
-        "tags": [
-          "PartesProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Partes.Producto PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/loopback.Count"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Producto.WhereFilter",
-                  "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<Producto>"
-                }
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoPartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "PartesProductoController.patch"
-      },
+    "/partes/{id}/fabricante": {
       "get": {
-        "x-controller-name": "PartesProductoController",
-        "x-operation-name": "find",
+        "x-controller-name": "PartesFabricanteController",
+        "x-operation-name": "getFabricante",
         "tags": [
-          "PartesProductoController"
+          "PartesFabricanteController"
         ],
         "responses": {
           "200": {
-            "description": "Array of Partes has many Producto",
+            "description": "Fabricante belonging to Partes",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Producto"
+                    "$ref": "#/components/schemas/Fabricante"
                   }
                 }
               }
@@ -3288,65 +3229,9 @@
               "type": "number"
             },
             "required": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              }
-            }
           }
         ],
-        "operationId": "PartesProductoController.find"
-      },
-      "delete": {
-        "x-controller-name": "PartesProductoController",
-        "x-operation-name": "delete",
-        "tags": [
-          "PartesProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Partes.Producto DELETE success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/loopback.Count"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Producto.WhereFilter",
-                  "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<Producto>"
-                }
-              }
-            }
-          }
-        ],
-        "operationId": "PartesProductoController.delete"
+        "operationId": "PartesFabricanteController.getFabricante"
       }
     },
     "/partes/{id}": {
@@ -3814,76 +3699,6 @@
         "operationId": "ProductoFabricanteController.getFabricante"
       }
     },
-    "/productos/{id}/garantia": {
-      "get": {
-        "x-controller-name": "ProductoGarantiaController",
-        "x-operation-name": "getGarantia",
-        "tags": [
-          "ProductoGarantiaController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Garantia belonging to Producto",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Garantia"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "ProductoGarantiaController.getGarantia"
-      }
-    },
-    "/productos/{id}/partes": {
-      "get": {
-        "x-controller-name": "ProductoPartesController",
-        "x-operation-name": "getPartes",
-        "tags": [
-          "ProductoPartesController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Partes belonging to Producto",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Partes"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "ProductoPartesController.getPartes"
-      }
-    },
     "/productos/{id}": {
       "put": {
         "x-controller-name": "ProductoController",
@@ -4196,12 +4011,6 @@
           },
           "idFabricante": {
             "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
-            "type": "number"
           }
         },
         "required": [
@@ -4249,12 +4058,6 @@
             "type": "number"
           },
           "idFabricante": {
-            "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
             "type": "number"
           }
         },
@@ -4308,12 +4111,6 @@
           },
           "idFabricante": {
             "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
-            "type": "number"
           }
         },
         "additionalProperties": false,
@@ -4365,42 +4162,6 @@
         ],
         "additionalProperties": false,
         "x-typescript-type": "Omit<Area, 'id'>"
-      },
-      "EmpleadoWithRelations": {
-        "title": "EmpleadoWithRelations",
-        "type": "object",
-        "description": "(tsType: EmpleadoWithRelations, schemaOptions: { includeRelations: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "nombre": {
-            "type": "string"
-          },
-          "correo": {
-            "type": "string"
-          },
-          "telefono": {
-            "type": "string"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "encargados": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EncargadoWithRelations"
-            }
-          }
-        },
-        "required": [
-          "nombre",
-          "correo",
-          "telefono",
-          "estado"
-        ],
-        "additionalProperties": false,
-        "x-typescript-type": "EmpleadoWithRelations"
       },
       "CategoriasWithRelations": {
         "title": "CategoriasWithRelations",
@@ -4465,6 +4226,42 @@
         "additionalProperties": false,
         "x-typescript-type": "EstadoProductoWithRelations"
       },
+      "PartesWithRelations": {
+        "title": "PartesWithRelations",
+        "type": "object",
+        "description": "(tsType: PartesWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idFabricante": {
+            "type": "number"
+          },
+          "Fabricantes": {
+            "$ref": "#/components/schemas/FabricanteWithRelations"
+          }
+        },
+        "required": [
+          "nombre"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "PartesWithRelations"
+      },
       "FabricanteWithRelations": {
         "title": "FabricanteWithRelations",
         "type": "object",
@@ -4493,6 +4290,12 @@
             "items": {
               "$ref": "#/components/schemas/ProductoWithRelations"
             }
+          },
+          "partes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PartesWithRelations"
+            }
           }
         },
         "required": [
@@ -4514,12 +4317,10 @@
             "type": "string"
           },
           "porcentaje": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "observacion": {
-            "type": "string"
-          },
-          "descripcion": {
             "type": "string"
           },
           "cuota": {
@@ -4528,11 +4329,11 @@
           "estado": {
             "type": "boolean"
           },
-          "productos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductoWithRelations"
-            }
+          "idProducto": {
+            "type": "number"
+          },
+          "Productos": {
+            "$ref": "#/components/schemas/ProductoWithRelations"
           }
         },
         "required": [
@@ -4542,10 +4343,10 @@
         "additionalProperties": false,
         "x-typescript-type": "GarantiaWithRelations"
       },
-      "PartesWithRelations": {
-        "title": "PartesWithRelations",
+      "EmpleadoWithRelations": {
+        "title": "EmpleadoWithRelations",
         "type": "object",
-        "description": "(tsType: PartesWithRelations, schemaOptions: { includeRelations: true })",
+        "description": "(tsType: EmpleadoWithRelations, schemaOptions: { includeRelations: true })",
         "properties": {
           "id": {
             "type": "number"
@@ -4553,37 +4354,30 @@
           "nombre": {
             "type": "string"
           },
-          "tipoParte": {
+          "correo": {
             "type": "string"
           },
-          "capacidad": {
-            "type": "string"
-          },
-          "valor": {
-            "type": "string"
-          },
-          "tecnologia": {
-            "type": "string"
-          },
-          "descripcion": {
+          "telefono": {
             "type": "string"
           },
           "estado": {
             "type": "boolean"
           },
-          "productos": {
+          "encargados": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ProductoWithRelations"
+              "$ref": "#/components/schemas/EncargadoWithRelations"
             }
           }
         },
         "required": [
           "nombre",
-          "valor"
+          "correo",
+          "telefono",
+          "estado"
         ],
         "additionalProperties": false,
-        "x-typescript-type": "PartesWithRelations"
+        "x-typescript-type": "EmpleadoWithRelations"
       },
       "EncargadoWithRelations": {
         "title": "EncargadoWithRelations",
@@ -4594,22 +4388,24 @@
             "type": "number"
           },
           "fechaInicial": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "fechaFinal": {
-            "type": "string"
-          },
-          "idEmpleado": {
-            "type": "number"
+            "type": "string",
+            "format": "date-time"
           },
           "idProducto": {
             "type": "number"
           },
-          "Empleados": {
-            "$ref": "#/components/schemas/EmpleadoWithRelations"
+          "idEmpleado": {
+            "type": "number"
           },
           "Productos": {
             "$ref": "#/components/schemas/ProductoWithRelations"
+          },
+          "Empleados": {
+            "$ref": "#/components/schemas/EmpleadoWithRelations"
           }
         },
         "required": [
@@ -4660,12 +4456,6 @@
           "idFabricante": {
             "type": "number"
           },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
-            "type": "number"
-          },
           "Areas": {
             "$ref": "#/components/schemas/AreaWithRelations"
           },
@@ -4678,11 +4468,11 @@
           "Fabricantes": {
             "$ref": "#/components/schemas/FabricanteWithRelations"
           },
-          "Garantias": {
-            "$ref": "#/components/schemas/GarantiaWithRelations"
-          },
-          "Parte": {
-            "$ref": "#/components/schemas/PartesWithRelations"
+          "garantias": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GarantiaWithRelations"
+            }
           },
           "encargados": {
             "type": "array",
@@ -4857,12 +4647,6 @@
           },
           "idFabricante": {
             "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
-            "type": "number"
           }
         },
         "required": [
@@ -4962,15 +4746,17 @@
             "type": "number"
           },
           "fechaInicial": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "fechaFinal": {
-            "type": "string"
-          },
-          "idEmpleado": {
-            "type": "number"
+            "type": "string",
+            "format": "date-time"
           },
           "idProducto": {
+            "type": "number"
+          },
+          "idEmpleado": {
             "type": "number"
           }
         },
@@ -4986,15 +4772,17 @@
         "description": "(tsType: Omit<Encargado, 'id'>, schemaOptions: { title: 'NewEncargado', exclude: [ 'id' ] })",
         "properties": {
           "fechaInicial": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "fechaFinal": {
-            "type": "string"
-          },
-          "idEmpleado": {
-            "type": "number"
+            "type": "string",
+            "format": "date-time"
           },
           "idProducto": {
+            "type": "number"
+          },
+          "idEmpleado": {
             "type": "number"
           }
         },
@@ -5014,15 +4802,17 @@
             "type": "number"
           },
           "fechaInicial": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "fechaFinal": {
-            "type": "string"
-          },
-          "idEmpleado": {
-            "type": "number"
+            "type": "string",
+            "format": "date-time"
           },
           "idProducto": {
+            "type": "number"
+          },
+          "idEmpleado": {
             "type": "number"
           }
         },
@@ -5065,12 +4855,6 @@
             "type": "number"
           },
           "idFabricante": {
-            "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
             "type": "number"
           }
         },
@@ -5152,6 +4936,97 @@
         "additionalProperties": false,
         "x-typescript-type": "Partial<EstadoProducto>"
       },
+      "Partes": {
+        "title": "Partes",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idFabricante": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "nombre"
+        ],
+        "additionalProperties": false
+      },
+      "NewPartesInFabricante": {
+        "title": "NewPartesInFabricante",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Partes, 'id'>, 'idFabricante'>, schemaOptions: { title: 'NewPartesInFabricante', exclude: [ 'id' ], optional: [ 'idFabricante' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idFabricante": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "nombre"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Partes, 'id'>, 'idFabricante'>"
+      },
+      "PartesPartial": {
+        "title": "PartesPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Partes>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idFabricante": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Partes>"
+      },
       "NewProductoInFabricante": {
         "title": "NewProductoInFabricante",
         "type": "object",
@@ -5188,12 +5063,6 @@
             "type": "number"
           },
           "idFabricante": {
-            "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
             "type": "number"
           }
         },
@@ -5291,61 +5160,6 @@
         "additionalProperties": false,
         "x-typescript-type": "Partial<Fabricante>"
       },
-      "NewProductoInGarantia": {
-        "title": "NewProductoInGarantia",
-        "type": "object",
-        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idGarantia'>, schemaOptions: { title: 'NewProductoInGarantia', exclude: [ 'id' ], optional: [ 'idGarantia' ] })",
-        "properties": {
-          "nombre": {
-            "type": "string"
-          },
-          "valor": {
-            "type": "number"
-          },
-          "vidaUtil": {
-            "type": "number"
-          },
-          "valorDepreciado": {
-            "type": "number"
-          },
-          "anioDepreciados": {
-            "type": "number"
-          },
-          "modelo": {
-            "type": "string"
-          },
-          "etiquetaServ": {
-            "type": "string"
-          },
-          "idArea": {
-            "type": "number"
-          },
-          "idCategorias": {
-            "type": "number"
-          },
-          "idEstadoProducto": {
-            "type": "number"
-          },
-          "idFabricante": {
-            "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "nombre",
-          "valor",
-          "vidaUtil",
-          "valorDepreciado",
-          "anioDepreciados"
-        ],
-        "additionalProperties": false,
-        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idGarantia'>"
-      },
       "Garantia": {
         "title": "Garantia",
         "type": "object",
@@ -5357,12 +5171,10 @@
             "type": "string"
           },
           "porcentaje": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "observacion": {
-            "type": "string"
-          },
-          "descripcion": {
             "type": "string"
           },
           "cuota": {
@@ -5370,6 +5182,9 @@
           },
           "estado": {
             "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
           }
         },
         "required": [
@@ -5387,12 +5202,10 @@
             "type": "string"
           },
           "porcentaje": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "observacion": {
-            "type": "string"
-          },
-          "descripcion": {
             "type": "string"
           },
           "cuota": {
@@ -5400,6 +5213,9 @@
           },
           "estado": {
             "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
           }
         },
         "required": [
@@ -5421,12 +5237,10 @@
             "type": "string"
           },
           "porcentaje": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "observacion": {
-            "type": "string"
-          },
-          "descripcion": {
             "type": "string"
           },
           "cuota": {
@@ -5434,100 +5248,13 @@
           },
           "estado": {
             "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
           }
         },
         "additionalProperties": false,
         "x-typescript-type": "Partial<Garantia>"
-      },
-      "NewProductoInPartes": {
-        "title": "NewProductoInPartes",
-        "type": "object",
-        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idPartes'>, schemaOptions: { title: 'NewProductoInPartes', exclude: [ 'id' ], optional: [ 'idPartes' ] })",
-        "properties": {
-          "nombre": {
-            "type": "string"
-          },
-          "valor": {
-            "type": "number"
-          },
-          "vidaUtil": {
-            "type": "number"
-          },
-          "valorDepreciado": {
-            "type": "number"
-          },
-          "anioDepreciados": {
-            "type": "number"
-          },
-          "modelo": {
-            "type": "string"
-          },
-          "etiquetaServ": {
-            "type": "string"
-          },
-          "idArea": {
-            "type": "number"
-          },
-          "idCategorias": {
-            "type": "number"
-          },
-          "idEstadoProducto": {
-            "type": "number"
-          },
-          "idFabricante": {
-            "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "nombre",
-          "valor",
-          "vidaUtil",
-          "valorDepreciado",
-          "anioDepreciados"
-        ],
-        "additionalProperties": false,
-        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idPartes'>"
-      },
-      "Partes": {
-        "title": "Partes",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "nombre": {
-            "type": "string"
-          },
-          "tipoParte": {
-            "type": "string"
-          },
-          "capacidad": {
-            "type": "string"
-          },
-          "valor": {
-            "type": "string"
-          },
-          "tecnologia": {
-            "type": "string"
-          },
-          "descripcion": {
-            "type": "string"
-          },
-          "estado": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "nombre",
-          "valor"
-        ],
-        "additionalProperties": false
       },
       "NewPartes": {
         "title": "NewPartes",
@@ -5543,58 +5270,21 @@
           "capacidad": {
             "type": "string"
           },
-          "valor": {
-            "type": "string"
-          },
           "tecnologia": {
-            "type": "string"
-          },
-          "descripcion": {
             "type": "string"
           },
           "estado": {
             "type": "boolean"
+          },
+          "idFabricante": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
-          "valor"
+          "nombre"
         ],
         "additionalProperties": false,
         "x-typescript-type": "Omit<Partes, 'id'>"
-      },
-      "PartesPartial": {
-        "title": "PartesPartial",
-        "type": "object",
-        "description": "(tsType: Partial<Partes>, schemaOptions: { partial: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "nombre": {
-            "type": "string"
-          },
-          "tipoParte": {
-            "type": "string"
-          },
-          "capacidad": {
-            "type": "string"
-          },
-          "valor": {
-            "type": "string"
-          },
-          "tecnologia": {
-            "type": "string"
-          },
-          "descripcion": {
-            "type": "string"
-          },
-          "estado": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false,
-        "x-typescript-type": "Partial<Partes>"
       },
       "NewProducto": {
         "title": "NewProducto",
@@ -5632,12 +5322,6 @@
             "type": "number"
           },
           "idFabricante": {
-            "type": "number"
-          },
-          "idGarantia": {
-            "type": "number"
-          },
-          "idPartes": {
             "type": "number"
           }
         },
@@ -6530,10 +6214,10 @@
                   "fechaFinal": {
                     "type": "boolean"
                   },
-                  "idEmpleado": {
+                  "idProducto": {
                     "type": "boolean"
                   },
-                  "idProducto": {
+                  "idEmpleado": {
                     "type": "boolean"
                   }
                 },
@@ -6547,8 +6231,8 @@
                     "id",
                     "fechaInicial",
                     "fechaFinal",
-                    "idEmpleado",
-                    "idProducto"
+                    "idProducto",
+                    "idEmpleado"
                   ],
                   "example": "id"
                 },
@@ -6624,10 +6308,10 @@
                   "fechaFinal": {
                     "type": "boolean"
                   },
-                  "idEmpleado": {
+                  "idProducto": {
                     "type": "boolean"
                   },
-                  "idProducto": {
+                  "idEmpleado": {
                     "type": "boolean"
                   }
                 },
@@ -6641,8 +6325,8 @@
                     "id",
                     "fechaInicial",
                     "fechaFinal",
-                    "idEmpleado",
-                    "idProducto"
+                    "idProducto",
+                    "idEmpleado"
                   ],
                   "example": "id"
                 },
@@ -7301,13 +6985,13 @@
                   "observacion": {
                     "type": "boolean"
                   },
-                  "descripcion": {
-                    "type": "boolean"
-                  },
                   "cuota": {
                     "type": "boolean"
                   },
                   "estado": {
+                    "type": "boolean"
+                  },
+                  "idProducto": {
                     "type": "boolean"
                   }
                 },
@@ -7322,9 +7006,9 @@
                     "fecha",
                     "porcentaje",
                     "observacion",
-                    "descripcion",
                     "cuota",
-                    "estado"
+                    "estado",
+                    "idProducto"
                   ],
                   "example": "id"
                 },
@@ -7403,13 +7087,13 @@
                   "observacion": {
                     "type": "boolean"
                   },
-                  "descripcion": {
-                    "type": "boolean"
-                  },
                   "cuota": {
                     "type": "boolean"
                   },
                   "estado": {
+                    "type": "boolean"
+                  },
+                  "idProducto": {
                     "type": "boolean"
                   }
                 },
@@ -7424,9 +7108,9 @@
                     "fecha",
                     "porcentaje",
                     "observacion",
-                    "descripcion",
                     "cuota",
-                    "estado"
+                    "estado",
+                    "idProducto"
                   ],
                   "example": "id"
                 },
@@ -7573,16 +7257,13 @@
                   "capacidad": {
                     "type": "boolean"
                   },
-                  "valor": {
-                    "type": "boolean"
-                  },
                   "tecnologia": {
                     "type": "boolean"
                   },
-                  "descripcion": {
+                  "estado": {
                     "type": "boolean"
                   },
-                  "estado": {
+                  "idFabricante": {
                     "type": "boolean"
                   }
                 },
@@ -7597,10 +7278,9 @@
                     "nombre",
                     "tipoParte",
                     "capacidad",
-                    "valor",
                     "tecnologia",
-                    "descripcion",
-                    "estado"
+                    "estado",
+                    "idFabricante"
                   ],
                   "example": "id"
                 },
@@ -7679,16 +7359,13 @@
                   "capacidad": {
                     "type": "boolean"
                   },
-                  "valor": {
-                    "type": "boolean"
-                  },
                   "tecnologia": {
                     "type": "boolean"
                   },
-                  "descripcion": {
+                  "estado": {
                     "type": "boolean"
                   },
-                  "estado": {
+                  "idFabricante": {
                     "type": "boolean"
                   }
                 },
@@ -7703,10 +7380,9 @@
                     "nombre",
                     "tipoParte",
                     "capacidad",
-                    "valor",
                     "tecnologia",
-                    "descripcion",
-                    "estado"
+                    "estado",
+                    "idFabricante"
                   ],
                   "example": "id"
                 },
@@ -7900,12 +7576,6 @@
                   },
                   "idFabricante": {
                     "type": "boolean"
-                  },
-                  "idGarantia": {
-                    "type": "boolean"
-                  },
-                  "idPartes": {
-                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -7926,9 +7596,7 @@
                     "idArea",
                     "idCategorias",
                     "idEstadoProducto",
-                    "idFabricante",
-                    "idGarantia",
-                    "idPartes"
+                    "idFabricante"
                   ],
                   "example": "id"
                 },
@@ -8030,12 +7698,6 @@
                   },
                   "idFabricante": {
                     "type": "boolean"
-                  },
-                  "idGarantia": {
-                    "type": "boolean"
-                  },
-                  "idPartes": {
-                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -8056,9 +7718,7 @@
                     "idArea",
                     "idCategorias",
                     "idEstadoProducto",
-                    "idFabricante",
-                    "idGarantia",
-                    "idPartes"
+                    "idFabricante"
                   ],
                   "example": "id"
                 },

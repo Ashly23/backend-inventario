@@ -11,7 +11,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Garantia} from '../models';
+import {Garantia, GarantiaWithRelations} from '../models';
 import {GarantiaRepository} from '../repositories';
 
 export class GarantiaController {
@@ -119,8 +119,10 @@ export class GarantiaController {
       },
     })
     garantia: Garantia,
-  ): Promise<void> {
+  ): Promise<GarantiaWithRelations> {
     await this.garantiaRepository.updateById(id, garantia);
+    //modificar
+    return this.garantiaRepository.findById(id, {"include": [{"relation": "Productos"}]});
   }
 
   @put('/garantias/{id}')

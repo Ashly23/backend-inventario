@@ -17,22 +17,22 @@ import {
 } from '@loopback/rest';
 import {
   Fabricante,
-  Producto,
+  Partes,
 } from '../models';
 import {FabricanteRepository} from '../repositories';
 
-export class FabricanteProductoController {
+export class FabricantePartesController {
   constructor(
     @repository(FabricanteRepository) protected fabricanteRepository: FabricanteRepository,
   ) { }
 
-  @get('/fabricantes/{id}/productos', {
+  @get('/fabricantes/{id}/partes', {
     responses: {
       '200': {
-        description: 'Array of Fabricante has many Producto',
+        description: 'Array of Fabricante has many Partes',
         content: {
           'application/json': {
-            schema: {type: 'array', items: getModelSchemaRef(Producto)},
+            schema: {type: 'array', items: getModelSchemaRef(Partes)},
           },
         },
       },
@@ -40,16 +40,16 @@ export class FabricanteProductoController {
   })
   async find(
     @param.path.number('id') id: number,
-    @param.query.object('filter') filter?: Filter<Producto>,
-  ): Promise<Producto[]> {
-    return this.fabricanteRepository.productos(id).find(filter);
+    @param.query.object('filter') filter?: Filter<Partes>,
+  ): Promise<Partes[]> {
+    return this.fabricanteRepository.partes(id).find(filter);
   }
 
-  @post('/fabricantes/{id}/productos', {
+  @post('/fabricantes/{id}/partes', {
     responses: {
       '200': {
         description: 'Fabricante model instance',
-        content: {'application/json': {schema: getModelSchemaRef(Producto)}},
+        content: {'application/json': {schema: getModelSchemaRef(Partes)}},
       },
     },
   })
@@ -58,22 +58,22 @@ export class FabricanteProductoController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Producto, {
-            title: 'NewProductoInFabricante',
+          schema: getModelSchemaRef(Partes, {
+            title: 'NewPartesInFabricante',
             exclude: ['id'],
             optional: ['idFabricante']
           }),
         },
       },
-    }) producto: Omit<Producto, 'id'>,
-  ): Promise<Producto> {
-    return this.fabricanteRepository.productos(id).create(producto);
+    }) partes: Omit<Partes, 'id'>,
+  ): Promise<Partes> {
+    return this.fabricanteRepository.partes(id).create(partes);
   }
 
-  @patch('/fabricantes/{id}/productos', {
+  @patch('/fabricantes/{id}/partes', {
     responses: {
       '200': {
-        description: 'Fabricante.Producto PATCH success count',
+        description: 'Fabricante.Partes PATCH success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -83,28 +83,28 @@ export class FabricanteProductoController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Producto, {partial: true}),
+          schema: getModelSchemaRef(Partes, {partial: true}),
         },
       },
     })
-    producto: Partial<Producto>,
-    @param.query.object('where', getWhereSchemaFor(Producto)) where?: Where<Producto>,
+    partes: Partial<Partes>,
+    @param.query.object('where', getWhereSchemaFor(Partes)) where?: Where<Partes>,
   ): Promise<Count> {
-    return this.fabricanteRepository.productos(id).patch(producto, where);
+    return this.fabricanteRepository.partes(id).patch(partes, where);
   }
 
-  @del('/fabricantes/{id}/productos', {
+  @del('/fabricantes/{id}/partes', {
     responses: {
       '200': {
-        description: 'Fabricante.Producto DELETE success count',
+        description: 'Fabricante.Partes DELETE success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
   })
   async delete(
     @param.path.number('id') id: number,
-    @param.query.object('where', getWhereSchemaFor(Producto)) where?: Where<Producto>,
+    @param.query.object('where', getWhereSchemaFor(Partes)) where?: Where<Partes>,
   ): Promise<Count> {
-    return this.fabricanteRepository.productos(id).delete(where);
+    return this.fabricanteRepository.partes(id).delete(where);
   }
 }

@@ -11,7 +11,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Partes} from '../models';
+import {Partes, PartesWithRelations} from '../models';
 import {PartesRepository} from '../repositories';
 
 export class PartesController {
@@ -119,8 +119,10 @@ export class PartesController {
       },
     })
     partes: Partes,
-  ): Promise<void> {
+  ): Promise<PartesWithRelations> {
     await this.partesRepository.updateById(id, partes);
+    //modificar
+    return this.partesRepository.findById(id, {"include": [{"relation": "Fabricantes"}]});
   }
 
   @put('/partes/{id}')

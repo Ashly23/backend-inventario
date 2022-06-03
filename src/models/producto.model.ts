@@ -5,7 +5,6 @@ import {Encargado} from './encargado.model';
 import {EstadoProducto} from './estado-producto.model';
 import {Fabricante} from './fabricante.model';
 import {Garantia} from './garantia.model';
-import {Partes} from './partes.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Producto'}}})
 export class Producto extends Entity {
@@ -83,17 +82,20 @@ export class Producto extends Entity {
   @belongsTo(() => EstadoProducto, {name: 'EstadoProductos'})
   idEstadoProducto: number;
 
-  @hasMany(() => Fabricante, {keyTo: 'idProducto'})
-  fabricantes: Fabricante[];
+  // @belongsTo(() => Partes, {name: 'Parte'})
+  //idPartes: number;
+
+  @belongsTo(() => Fabricante, {name: 'Fabricantes'})
+  idFabricante: number;
+
+  //@hasMany(() => Fabricante, {keyTo: 'idProducto'})
+  //fabricantes: Fabricante[];
 
   @hasMany(() => Garantia, {keyTo: 'idProducto'})
   garantias: Garantia[];
 
   @hasMany(() => Encargado, {keyTo: 'idProducto'})
   encargados: Encargado[];
-
-  @belongsTo(() => Partes, {name: 'Parte'})
-  idPartes: number;
 
   // Define well-known properties here
 
