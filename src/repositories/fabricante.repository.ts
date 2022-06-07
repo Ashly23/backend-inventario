@@ -1,9 +1,9 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
+import {Getter, inject} from '@loopback/core';
+import {DefaultCrudRepository, HasManyRepositoryFactory, repository} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
-import {Fabricante, FabricanteRelations, Producto, Partes} from '../models';
-import {ProductoRepository} from './producto.repository';
+import {Fabricante, FabricanteRelations, Partes, Producto} from '../models';
 import {PartesRepository} from './partes.repository';
+import {ProductoRepository} from './producto.repository';
 
 export class FabricanteRepository extends DefaultCrudRepository<
   Fabricante,

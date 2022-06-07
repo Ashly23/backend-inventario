@@ -38,7 +38,8 @@ export class GarantiaController {
     })
     garantia: Omit<Garantia, 'id'>,
   ): Promise<Garantia> {
-    return this.garantiaRepository.create(garantia);
+    let item = await this.garantiaRepository.create(garantia);
+    return this.garantiaRepository.findById(item.id, {"include": [{"relation": "Productos"}]});
   }
 
   @get('/garantias/count')

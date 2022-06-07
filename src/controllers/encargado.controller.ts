@@ -38,7 +38,8 @@ export class EncargadoController {
     })
     encargado: Omit<Encargado, 'id'>,
   ): Promise<Encargado> {
-    return this.encargadoRepository.create(encargado);
+    let item = await this.encargadoRepository.create(encargado);
+    return this.encargadoRepository.findById(item.id, {"include": [{"relation": "Productos"}, {"relation": "Empleados"}]});
   }
 
   @get('/encargados/count')

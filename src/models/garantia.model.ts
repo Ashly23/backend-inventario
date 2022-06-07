@@ -22,7 +22,7 @@ export class Garantia extends Entity {
   fecha: Date;
 
   @property({
-    type: 'Date',
+    type: 'string',
     length: 50,
     mssql: {columnName: 'porcentaje', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
