@@ -22,15 +22,23 @@ export class Producto extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'nombre', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'nombre', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   nombre: string;
+
+  @property({
+    type: 'Date',
+    required: true,
+    length: 50,
+    mssql: {columnName: 'fechaCompra', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+  })
+  fechaCompra: Date;
 
   @property({
     type: 'number',
     required: true,
     precision: 53,
-    mssql: {columnName: 'valor', dataType: 'float', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'valor', dataType: 'number', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
   })
   valor: number;
 
@@ -38,7 +46,7 @@ export class Producto extends Entity {
     type: 'number',
     required: true,
     precision: 53,
-    mssql: {columnName: 'vidaUtil', dataType: 'float', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'vidaUtil', dataType: 'number', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
   })
   vidaUtil: number;
 
@@ -46,7 +54,7 @@ export class Producto extends Entity {
     type: 'number',
     required: true,
     precision: 53,
-    mssql: {columnName: 'valorDepreciado', dataType: 'float', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'valorDepreciado', dataType: 'number', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
   })
   valorDepreciado: number;
 
@@ -54,7 +62,7 @@ export class Producto extends Entity {
     type: 'number',
     required: true,
     precision: 53,
-    mssql: {columnName: 'anioDepreciados', dataType: 'float', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'anioDepreciados', dataType: 'number', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
   })
   anioDepreciados: number;
 
@@ -82,14 +90,8 @@ export class Producto extends Entity {
   @belongsTo(() => EstadoProducto, {name: 'EstadoProductos'})
   idEstadoProducto: number;
 
-  // @belongsTo(() => Partes, {name: 'Parte'})
-  //idPartes: number;
-
   @belongsTo(() => Fabricante, {name: 'Fabricantes'})
   idFabricante: number;
-
-  //@hasMany(() => Fabricante, {keyTo: 'idProducto'})
-  //fabricantes: Fabricante[];
 
   @hasMany(() => Garantia, {keyTo: 'idProducto'})
   garantias: Garantia[];

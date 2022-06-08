@@ -17,9 +17,17 @@ export class Garantia extends Entity {
     type: 'Date',
     required: true,
     length: 50,
-    mssql: {columnName: 'fecha', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'fechaInicial', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
-  fecha: Date;
+  fechaInicial: Date;
+
+  @property({
+    type: 'Date',
+    required: true,
+    length: 50,
+    mssql: {columnName: 'fechaFinal', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+  })
+  fechaFinal: Date;
 
   @property({
     type: 'string',

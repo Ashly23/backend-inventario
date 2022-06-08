@@ -22,3 +22,5 @@ export * from './fabricante-producto.controller';
 export * from './producto-fabricante.controller';
 export * from './fabricante-partes.controller';
 export * from './partes-fabricante.controller';
+export * from './area-empleado.controller';
+export * from './empleado-area.controller';
