@@ -8,3 +8,4 @@ export * from './garantia.model';
 export * from './partes.model';
 export * from './producto.model';
 
+export * from './producto-partes-detalle.model';

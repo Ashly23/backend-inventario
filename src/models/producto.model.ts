@@ -5,6 +5,7 @@ import {Encargado} from './encargado.model';
 import {EstadoProducto} from './estado-producto.model';
 import {Fabricante} from './fabricante.model';
 import {Garantia} from './garantia.model';
+import {ProductoPartesDetalle} from './producto-partes-detalle.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Producto'}}})
 export class Producto extends Entity {
@@ -98,6 +99,9 @@ export class Producto extends Entity {
 
   @hasMany(() => Encargado, {keyTo: 'idProducto'})
   encargados: Encargado[];
+
+  @hasMany(() => ProductoPartesDetalle, {keyTo: 'idProducto'})
+  productoPartesDetalles: ProductoPartesDetalle[];
 
   // Define well-known properties here
 
