@@ -38,7 +38,9 @@ export class PartesController {
     })
     partes: Omit<Partes, 'id'>,
   ): Promise<Partes> {
+    console.log('holis')
     let item = await this.partesRepository.create(partes);
+    console.log(item)
     return this.partesRepository.findById(item.id, {"include": [{"relation": "Fabricantes"}]});
   }
 

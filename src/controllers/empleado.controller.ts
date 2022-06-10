@@ -11,7 +11,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Empleado} from '../models';
+import {Empleado, EmpleadoWithRelations} from '../models';
 import {EmpleadoRepository} from '../repositories';
 
 export class EmpleadoController {
@@ -38,7 +38,8 @@ export class EmpleadoController {
     })
     empleado: Omit<Empleado, 'id'>,
   ): Promise<Empleado> {
-    return this.empleadoRepository.create(empleado);
+    let item = await this.empleadoRepository.create(empleado);
+    return this.empleadoRepository.findById(item.id, {"include": [{"relation": "Areas"}]});
   }
 
   @get('/empleados/count')
@@ -119,8 +120,9 @@ export class EmpleadoController {
       },
     })
     empleado: Empleado,
-  ): Promise<void> {
+  ): Promise<EmpleadoWithRelations> {
     await this.empleadoRepository.updateById(id, empleado);
+    return this.empleadoRepository.findById(id, {"include": [{"relation": "Areas"}]});
   }
 
   @put('/empleados/{id}')
