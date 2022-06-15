@@ -1244,6 +1244,191 @@
         "operationId": "EmpleadoAreaController.getArea"
       }
     },
+    "/empleados/{id}/solicitud": {
+      "post": {
+        "x-controller-name": "EmpleadoSolicitudController",
+        "x-operation-name": "create",
+        "tags": [
+          "EmpleadoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSolicitudInEmpleado"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoSolicitudController.create"
+      },
+      "patch": {
+        "x-controller-name": "EmpleadoSolicitudController",
+        "x-operation-name": "patch",
+        "tags": [
+          "EmpleadoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado.Solicitud PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitudPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoSolicitudController.patch"
+      },
+      "get": {
+        "x-controller-name": "EmpleadoSolicitudController",
+        "x-operation-name": "find",
+        "tags": [
+          "EmpleadoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Empleado has many Solicitud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitud"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoSolicitudController.find"
+      },
+      "delete": {
+        "x-controller-name": "EmpleadoSolicitudController",
+        "x-operation-name": "delete",
+        "tags": [
+          "EmpleadoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado.Solicitud DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoSolicitudController.delete"
+      }
+    },
     "/empleados/{id}": {
       "put": {
         "x-controller-name": "EmpleadoController",
@@ -3454,6 +3639,191 @@
         "operationId": "PartesFabricanteController.getFabricante"
       }
     },
+    "/partes/{id}/producto-partes-detalles": {
+      "post": {
+        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-operation-name": "create",
+        "tags": [
+          "PartesProductoPartesDetalleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductoPartesDetalle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewProductoPartesDetalleInPartes"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PartesProductoPartesDetalleController.create"
+      },
+      "patch": {
+        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-operation-name": "patch",
+        "tags": [
+          "PartesProductoPartesDetalleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes.ProductoPartesDetalle PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "ProductoPartesDetalle.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoPartesDetallePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PartesProductoPartesDetalleController.patch"
+      },
+      "get": {
+        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-operation-name": "find",
+        "tags": [
+          "PartesProductoPartesDetalleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Partes has many ProductoPartesDetalle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductoPartesDetalle"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PartesProductoPartesDetalleController.find"
+      },
+      "delete": {
+        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-operation-name": "delete",
+        "tags": [
+          "PartesProductoPartesDetalleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes.ProductoPartesDetalle DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "ProductoPartesDetalle.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PartesProductoPartesDetalleController.delete"
+      }
+    },
     "/partes/{id}": {
       "put": {
         "x-controller-name": "PartesController",
@@ -3777,6 +4147,41 @@
           }
         ],
         "operationId": "ProductoPartesDetalleController.count"
+      }
+    },
+    "/producto-partes-detalles/{id}/partes": {
+      "get": {
+        "x-controller-name": "ProductoPartesDetallePartesController",
+        "x-operation-name": "getPartes",
+        "tags": [
+          "ProductoPartesDetallePartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes belonging to ProductoPartesDetalle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Partes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ProductoPartesDetallePartesController.getPartes"
       }
     },
     "/producto-partes-detalles/{id}/producto": {
@@ -4706,6 +5111,344 @@
         ],
         "operationId": "ProductoController.find"
       }
+    },
+    "/solicitud/count": {
+      "get": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "count",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitudController.count"
+      }
+    },
+    "/solicitud/{id}/empleado": {
+      "get": {
+        "x-controller-name": "SolicitudEmpleadoController",
+        "x-operation-name": "getEmpleado",
+        "tags": [
+          "SolicitudEmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado belonging to Solicitud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empleado"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SolicitudEmpleadoController.getEmpleado"
+      }
+    },
+    "/solicitud/{id}": {
+      "put": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitud PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Solicitud"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitudController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitud PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitudPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitudController.updateById"
+      },
+      "get": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "findById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SolicitudWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitudController.findById"
+      },
+      "delete": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitud DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SolicitudController.deleteById"
+      }
+    },
+    "/solicitud": {
+      "post": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "create",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSolicitud"
+              }
+            }
+          }
+        },
+        "operationId": "SolicitudController.create"
+      },
+      "patch": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitudPartial"
+              }
+            }
+          }
+        },
+        "operationId": "SolicitudController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "find",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Solicitud model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SolicitudWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitudController.find"
+      }
     }
   },
   "servers": [
@@ -5008,6 +5751,46 @@
         "additionalProperties": false,
         "x-typescript-type": "Omit<Area, 'id'>"
       },
+      "ProductoPartesDetalleWithRelations": {
+        "title": "ProductoPartesDetalleWithRelations",
+        "type": "object",
+        "description": "(tsType: ProductoPartesDetalleWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaInicial": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFinal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
+          },
+          "idParte": {
+            "type": "number"
+          },
+          "Productos": {
+            "$ref": "#/components/schemas/ProductoWithRelations"
+          },
+          "Partes": {
+            "$ref": "#/components/schemas/PartesWithRelations"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal",
+          "estado"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "ProductoPartesDetalleWithRelations"
+      },
       "CategoriasWithRelations": {
         "title": "CategoriasWithRelations",
         "type": "object",
@@ -5096,6 +5879,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "productoPartesDetalles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductoPartesDetalleWithRelations"
+            }
           },
           "Fabricantes": {
             "$ref": "#/components/schemas/FabricanteWithRelations"
@@ -5193,6 +5982,34 @@
         "additionalProperties": false,
         "x-typescript-type": "GarantiaWithRelations"
       },
+      "SolicitudWithRelations": {
+        "title": "SolicitudWithRelations",
+        "type": "object",
+        "description": "(tsType: SolicitudWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "partes": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "Empleados": {
+            "$ref": "#/components/schemas/EmpleadoWithRelations"
+          }
+        },
+        "required": [
+          "partes",
+          "descripcion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "SolicitudWithRelations"
+      },
       "EmpleadoWithRelations": {
         "title": "EmpleadoWithRelations",
         "type": "object",
@@ -5224,6 +6041,12 @@
           },
           "Areas": {
             "$ref": "#/components/schemas/AreaWithRelations"
+          },
+          "solicitud": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SolicitudWithRelations"
+            }
           }
         },
         "required": [
@@ -5270,44 +6093,6 @@
         ],
         "additionalProperties": false,
         "x-typescript-type": "EncargadoWithRelations"
-      },
-      "ProductoPartesDetalleWithRelations": {
-        "title": "ProductoPartesDetalleWithRelations",
-        "type": "object",
-        "description": "(tsType: ProductoPartesDetalleWithRelations, schemaOptions: { includeRelations: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "idParte": {
-            "type": "number"
-          },
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idProducto": {
-            "type": "number"
-          },
-          "Productos": {
-            "$ref": "#/components/schemas/ProductoWithRelations"
-          }
-        },
-        "required": [
-          "idParte",
-          "fechaInicial",
-          "fechaFinal",
-          "estado"
-        ],
-        "additionalProperties": true,
-        "x-typescript-type": "ProductoPartesDetalleWithRelations"
       },
       "ProductoWithRelations": {
         "title": "ProductoWithRelations",
@@ -5574,6 +6359,72 @@
         ],
         "additionalProperties": false,
         "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idCategorias'>"
+      },
+      "Solicitud": {
+        "title": "Solicitud",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "partes": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "partes",
+          "descripcion"
+        ],
+        "additionalProperties": false
+      },
+      "NewSolicitudInEmpleado": {
+        "title": "NewSolicitudInEmpleado",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idEmpleado'>, schemaOptions: { title: 'NewSolicitudInEmpleado', exclude: [ 'id' ], optional: [ 'idEmpleado' ] })",
+        "properties": {
+          "partes": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "partes",
+          "descripcion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idEmpleado'>"
+      },
+      "SolicitudPartial": {
+        "title": "SolicitudPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Solicitud>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "partes": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Solicitud>"
       },
       "NewEmpleado": {
         "title": "NewEmpleado",
@@ -6147,6 +6998,120 @@
         "additionalProperties": false,
         "x-typescript-type": "Partial<Garantia>"
       },
+      "ProductoPartesDetalle": {
+        "title": "ProductoPartesDetalle",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaInicial": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFinal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
+          },
+          "idParte": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal",
+          "estado"
+        ],
+        "additionalProperties": true
+      },
+      "NewProductoPartesDetalleInPartes": {
+        "title": "NewProductoPartesDetalleInPartes",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idParte'>, schemaOptions: { title: 'NewProductoPartesDetalleInPartes', exclude: [ 'id' ], optional: [ 'idParte' ] })",
+        "properties": {
+          "fechaInicial": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFinal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
+          },
+          "idParte": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal",
+          "estado"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idParte'>"
+      },
+      "ProductoPartesDetallePartial": {
+        "title": "ProductoPartesDetallePartial",
+        "type": "object",
+        "description": "(tsType: Partial<ProductoPartesDetalle>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaInicial": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFinal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
+          },
+          "idParte": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<ProductoPartesDetalle>"
+      },
+      "NewSolicitudInPartes": {
+        "title": "NewSolicitudInPartes",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idPartes'>, schemaOptions: { title: 'NewSolicitudInPartes', exclude: [ 'id' ], optional: [ 'idPartes' ] })",
+        "properties": {
+          "partes": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "partes",
+          "descripcion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idPartes'>"
+      },
       "NewPartes": {
         "title": "NewPartes",
         "type": "object",
@@ -6177,47 +7142,11 @@
         "additionalProperties": false,
         "x-typescript-type": "Omit<Partes, 'id'>"
       },
-      "ProductoPartesDetalle": {
-        "title": "ProductoPartesDetalle",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "idParte": {
-            "type": "number"
-          },
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idProducto": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "idParte",
-          "fechaInicial",
-          "fechaFinal",
-          "estado"
-        ],
-        "additionalProperties": true
-      },
       "NewProductoPartesDetalle": {
         "title": "NewProductoPartesDetalle",
         "type": "object",
         "description": "(tsType: Omit<ProductoPartesDetalle, 'id'>, schemaOptions: { title: 'NewProductoPartesDetalle', exclude: [ 'id' ] })",
         "properties": {
-          "idParte": {
-            "type": "number"
-          },
           "fechaInicial": {
             "type": "string",
             "format": "date-time"
@@ -6231,10 +7160,12 @@
           },
           "idProducto": {
             "type": "number"
+          },
+          "idParte": {
+            "type": "number"
           }
         },
         "required": [
-          "idParte",
           "fechaInicial",
           "fechaFinal",
           "estado"
@@ -6242,43 +7173,11 @@
         "additionalProperties": true,
         "x-typescript-type": "Omit<ProductoPartesDetalle, 'id'>"
       },
-      "ProductoPartesDetallePartial": {
-        "title": "ProductoPartesDetallePartial",
-        "type": "object",
-        "description": "(tsType: Partial<ProductoPartesDetalle>, schemaOptions: { partial: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "idParte": {
-            "type": "number"
-          },
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idProducto": {
-            "type": "number"
-          }
-        },
-        "additionalProperties": true,
-        "x-typescript-type": "Partial<ProductoPartesDetalle>"
-      },
       "NewProductoPartesDetalleInProducto": {
         "title": "NewProductoPartesDetalleInProducto",
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idProducto'>, schemaOptions: { title: 'NewProductoPartesDetalleInProducto', exclude: [ 'id' ], optional: [ 'idProducto' ] })",
         "properties": {
-          "idParte": {
-            "type": "number"
-          },
           "fechaInicial": {
             "type": "string",
             "format": "date-time"
@@ -6292,10 +7191,12 @@
           },
           "idProducto": {
             "type": "number"
+          },
+          "idParte": {
+            "type": "number"
           }
         },
         "required": [
-          "idParte",
           "fechaInicial",
           "fechaFinal",
           "estado"
@@ -6356,6 +7257,28 @@
         ],
         "additionalProperties": false,
         "x-typescript-type": "Omit<Producto, 'id'>"
+      },
+      "NewSolicitud": {
+        "title": "NewSolicitud",
+        "type": "object",
+        "description": "(tsType: Omit<Solicitud, 'id'>, schemaOptions: { title: 'NewSolicitud', exclude: [ 'id' ] })",
+        "properties": {
+          "partes": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "idEmpleado": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "partes",
+          "descripcion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Solicitud, 'id'>"
       },
       "loopback.Count": {
         "type": "object",
@@ -8582,9 +9505,6 @@
                   "id": {
                     "type": "boolean"
                   },
-                  "idParte": {
-                    "type": "boolean"
-                  },
                   "fechaInicial": {
                     "type": "boolean"
                   },
@@ -8595,6 +9515,9 @@
                     "type": "boolean"
                   },
                   "idProducto": {
+                    "type": "boolean"
+                  },
+                  "idParte": {
                     "type": "boolean"
                   }
                 },
@@ -8672,9 +9595,6 @@
                   "id": {
                     "type": "boolean"
                   },
-                  "idParte": {
-                    "type": "boolean"
-                  },
                   "fechaInicial": {
                     "type": "boolean"
                   },
@@ -8685,6 +9605,9 @@
                     "type": "boolean"
                   },
                   "idProducto": {
+                    "type": "boolean"
+                  },
+                  "idParte": {
                     "type": "boolean"
                   }
                 },
@@ -9038,6 +9961,254 @@
         },
         "additionalProperties": false,
         "x-typescript-type": "@loopback/repository#Filter<Producto>"
+      },
+      "Solicitud.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Solicitud.ScopeFilter"
+      },
+      "Solicitud.IncludeFilter.Items": {
+        "title": "Solicitud.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Solicitud.ScopeFilter"
+          }
+        }
+      },
+      "Solicitud.Filter": {
+        "type": "object",
+        "title": "Solicitud.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "partes": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "idEmpleado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "partes",
+                    "descripcion",
+                    "idEmpleado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Solicitud.Fields"
+          },
+          "include": {
+            "title": "Solicitud.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Solicitud.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Solicitud>"
+      },
+      "Solicitud.Filter1": {
+        "type": "object",
+        "title": "Solicitud.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Solicitud.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "partes": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "idEmpleado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "partes",
+                    "descripcion",
+                    "idEmpleado"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Solicitud.Fields"
+          },
+          "include": {
+            "title": "Solicitud.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Solicitud.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Solicitud>"
       }
     }
   }

@@ -29,3 +29,6 @@ export * from './producto-producto-partes-detalle.controller';
 export * from './producto-partes-detalle-producto.controller';
 export * from './partes-producto-partes-detalle.controller';
 export * from './producto-partes-detalle-partes.controller';
+export * from './solicitud.controller';
+export * from './empleado-solicitud.controller';
+export * from './solicitud-empleado.controller';

@@ -1,9 +1,10 @@
 import {Getter, inject} from '@loopback/core';
 import {BelongsToAccessor, DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
-import {Fabricante, Partes, PartesRelations, ProductoPartesDetalle} from '../models';
+import {Fabricante, Partes, PartesRelations, ProductoPartesDetalle, Solicitud} from '../models';
 import {FabricanteRepository} from './fabricante.repository';
 import {ProductoPartesDetalleRepository} from './producto-partes-detalle.repository';
+import {SolicitudRepository} from './solicitud.repository';
 
 export class PartesRepository extends DefaultCrudRepository<
   Partes,
@@ -16,7 +17,7 @@ export class PartesRepository extends DefaultCrudRepository<
   public readonly productoPartesDetalles: HasManyRepositoryFactory<ProductoPartesDetalle, typeof Partes.prototype.id>;
 
   constructor(
-    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('FabricanteRepository') protected fabricanteRepositoryGetter: Getter<FabricanteRepository>, @repository.getter('ProductoPartesDetalleRepository') protected productoPartesDetalleRepositoryGetter: Getter<ProductoPartesDetalleRepository>,
+    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('FabricanteRepository') protected fabricanteRepositoryGetter: Getter<FabricanteRepository>, @repository.getter('ProductoPartesDetalleRepository') protected productoPartesDetalleRepositoryGetter: Getter<ProductoPartesDetalleRepository>, 
   ) {
     super(Partes, dataSource);
     this.productoPartesDetalles = this.createHasManyRepositoryFactoryFor('productoPartesDetalles', productoPartesDetalleRepositoryGetter,);
