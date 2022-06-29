@@ -19,7 +19,7 @@ export class Empleado extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'nombre', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'nombre', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   nombre: string;
 
@@ -27,7 +27,7 @@ export class Empleado extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'correo', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'correo', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   correo: string;
 
@@ -35,7 +35,7 @@ export class Empleado extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'telefono', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'telefono', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   telefono: string;
 

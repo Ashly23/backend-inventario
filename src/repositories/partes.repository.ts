@@ -1,10 +1,10 @@
 import {Getter, inject} from '@loopback/core';
 import {BelongsToAccessor, DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
 import {CannDataSource} from '../datasources';
-import {Fabricante, Partes, PartesRelations, ProductoPartesDetalle, Solicitud} from '../models';
+import {Fabricante, Partes, PartesRelations, Solicitud, Producto} from '../models';
 import {FabricanteRepository} from './fabricante.repository';
-import {ProductoPartesDetalleRepository} from './producto-partes-detalle.repository';
 import {SolicitudRepository} from './solicitud.repository';
+import {ProductoRepository} from './producto.repository';
 
 export class PartesRepository extends DefaultCrudRepository<
   Partes,
@@ -14,14 +14,18 @@ export class PartesRepository extends DefaultCrudRepository<
 
   public readonly Fabricantes: BelongsToAccessor<Fabricante, typeof Partes.prototype.id>;
 
-  public readonly productoPartesDetalles: HasManyRepositoryFactory<ProductoPartesDetalle, typeof Partes.prototype.id>;
+  public readonly solicitud: HasManyRepositoryFactory<Solicitud, typeof Partes.prototype.id>;
+
+  public readonly Productos: BelongsToAccessor<Producto, typeof Partes.prototype.id>;
 
   constructor(
-    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('FabricanteRepository') protected fabricanteRepositoryGetter: Getter<FabricanteRepository>, @repository.getter('ProductoPartesDetalleRepository') protected productoPartesDetalleRepositoryGetter: Getter<ProductoPartesDetalleRepository>, 
+    @inject('datasources.cann') dataSource: CannDataSource, @repository.getter('FabricanteRepository') protected fabricanteRepositoryGetter: Getter<FabricanteRepository>, @repository.getter('SolicitudRepository') protected solicitudRepositoryGetter: Getter<SolicitudRepository>, @repository.getter('ProductoRepository') protected productoRepositoryGetter: Getter<ProductoRepository>, 
   ) {
     super(Partes, dataSource);
-    this.productoPartesDetalles = this.createHasManyRepositoryFactoryFor('productoPartesDetalles', productoPartesDetalleRepositoryGetter,);
-    this.registerInclusionResolver('productoPartesDetalles', this.productoPartesDetalles.inclusionResolver);
+    this.Productos = this.createBelongsToAccessorFor('Productos', productoRepositoryGetter,);
+    this.registerInclusionResolver('Productos', this.Productos.inclusionResolver);
+    this.solicitud = this.createHasManyRepositoryFactoryFor('solicitud', solicitudRepositoryGetter,);
+    this.registerInclusionResolver('solicitud', this.solicitud.inclusionResolver);
     this.Fabricantes = this.createBelongsToAccessorFor('Fabricantes', fabricanteRepositoryGetter,);
     this.registerInclusionResolver('Fabricantes', this.Fabricantes.inclusionResolver);
   }

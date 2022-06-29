@@ -18,17 +18,9 @@ export class Area extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'nombre', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'nombre', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   nombre: string;
-
-  @property({
-    type: 'string',
-    required: true,
-    length: 100,
-    mssql: {columnName: 'descripcion', dataType: 'nchar', dataLength: 100, dataPrecision: null, dataScale: null, nullable: 'NO'},
-  })
-  descripcion: string;
 
   @property({
     type: 'boolean',

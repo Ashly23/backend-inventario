@@ -1,6 +1,7 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Empleado} from './empleado.model';
 import {Partes} from './partes.model';
+import {Producto} from './producto.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Solicitud'}}})
 export class Solicitud extends Entity {
@@ -15,28 +16,40 @@ export class Solicitud extends Entity {
   id?: number;
   
   @property({
-    type: 'string',
+    type: 'Date',
     required: true,
     length: 50,
-    mssql: {columnName: 'partes', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'fechaSolicitud', dataType: 'Date', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
-  partes: string;
+  fechaSolicitud: Date;
 
   @property({
-    type: 'string',
+    type: 'number',
     required: true,
-    length: 100,
-    mssql: {columnName: 'descripcion', dataType: 'nchar', dataLength: 100, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    precision: 53,
+    mssql: {columnName: 'cotizacion', dataType: 'number', dataLength: null, dataPrecision: 53, dataScale: null, nullable: 'NO'},
   })
-  descripcion: string;
+  cotizacion: number;
+
+  @property({
+    type: 'boolean',
+    required: true,
+    mssql: {columnName: 'estado', dataType: 'bit', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'NO'},
+  })
+  estado: boolean;
 
   @belongsTo(() => Empleado, {name: 'Empleados'})
   idEmpleado: number;
 
+  @belongsTo(() => Partes, {name: 'Partes'})
+  idPartes: number;
 
+  @belongsTo(() => Producto, {name: 'Productos'})
+  idProducto: number;
 
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
   [prop: string]: any;
 
   constructor(data?: Partial<Solicitud>) {

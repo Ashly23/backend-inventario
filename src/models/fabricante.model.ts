@@ -18,14 +18,14 @@ export class Fabricante extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'nombre', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'nombre', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   nombre: string;
 
   @property({
     type: 'string',
     length: 50,
-    mssql: {columnName: 'correo', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'correo', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   correo?: string;
 
@@ -33,14 +33,14 @@ export class Fabricante extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'telefono', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'telefono', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   telefono: string;
 
   @property({
     type: 'string',
     length: 50,
-    mssql: {columnName: 'sitioWeb', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'sitioWeb', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   sitioWeb?: string;
 

@@ -32,21 +32,21 @@ export class Garantia extends Entity {
   @property({
     type: 'string',
     length: 50,
-    mssql: {columnName: 'porcentaje', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'porcentaje', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   porcentaje?: string;
 
   @property({
     type: 'string',
     length: 200,
-    mssql: {columnName: 'observacion', dataType: 'nchar', dataLength: 200, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'observacion', dataType: 'nvarchar', dataLength: 200, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   observacion?: string;
 
   @property({
     type: 'string',
     length: 100,
-    mssql: {columnName: 'cuota', dataType: 'nchar', dataLength: 100, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'cuota', dataType: 'nvarchar', dataLength: 100, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   cuota?: string;
 

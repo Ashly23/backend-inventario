@@ -45,7 +45,7 @@ export class SolicitudController {
     solicitud: Omit<Solicitud, 'id'>,
   ): Promise<Solicitud> {
     let item = await this.solicitudRepository.create(solicitud);
-    return this.solicitudRepository.findById(item.id, {"include": [{"relation": "Empleados"}]});
+    return this.solicitudRepository.findById(item.id, {"include": [{"relation": "Empleados"}, {"relation": "Productos"}, {"relation": "Partes"}]});
   }
 
   @get('/solicitud/count')
@@ -129,7 +129,7 @@ export class SolicitudController {
   ): Promise<SolicitudWithRelations> {
     await this.solicitudRepository.updateById(id, solicitud);
     //mm
-    return this.solicitudRepository.findById(id,  {"include": [{"relation": "Empleados"}]})
+    return this.solicitudRepository.findById(id,  {"include": [{"relation": "Empleados"}, {"relation": "Productos"}, {"relation": "Partes"}]})
   }
 
   @put('/solicitud/{id}')

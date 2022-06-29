@@ -7,6 +7,4 @@ export * from './fabricante.repository';
 export * from './garantia.repository';
 export * from './partes.repository';
 export * from './producto.repository';
-
-export * from './producto-partes-detalle.repository';
 export * from './solicitud.repository';

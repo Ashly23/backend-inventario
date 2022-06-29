@@ -2067,6 +2067,21 @@
         "operationId": "EncargadoController.find"
       }
     },
+    "/equiposDepart": {
+      "get": {
+        "x-controller-name": "ReportesController",
+        "x-operation-name": "equiposDepart",
+        "tags": [
+          "ReportesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return value of ReportesController.equiposDepart"
+          }
+        },
+        "operationId": "ReportesController.equiposDepart"
+      }
+    },
     "/estado-productos/count": {
       "get": {
         "x-controller-name": "EstadoProductoController",
@@ -3639,12 +3654,47 @@
         "operationId": "PartesFabricanteController.getFabricante"
       }
     },
-    "/partes/{id}/producto-partes-detalles": {
+    "/partes/{id}/producto": {
+      "get": {
+        "x-controller-name": "PartesProductoController",
+        "x-operation-name": "getProducto",
+        "tags": [
+          "PartesProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto belonging to Partes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PartesProductoController.getProducto"
+      }
+    },
+    "/partes/{id}/solicitud": {
       "post": {
-        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-controller-name": "PartesSolicitudController",
         "x-operation-name": "create",
         "tags": [
-          "PartesProductoPartesDetalleController"
+          "PartesSolicitudController"
         ],
         "responses": {
           "200": {
@@ -3652,7 +3702,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle"
+                  "$ref": "#/components/schemas/Solicitud"
                 }
               }
             }
@@ -3672,23 +3722,23 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProductoPartesDetalleInPartes"
+                "$ref": "#/components/schemas/NewSolicitudInPartes"
               }
             }
           },
           "x-parameter-index": 1
         },
-        "operationId": "PartesProductoPartesDetalleController.create"
+        "operationId": "PartesSolicitudController.create"
       },
       "patch": {
-        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-controller-name": "PartesSolicitudController",
         "x-operation-name": "patch",
         "tags": [
-          "PartesProductoPartesDetalleController"
+          "PartesSolicitudController"
         ],
         "responses": {
           "200": {
-            "description": "Partes.ProductoPartesDetalle PATCH success count",
+            "description": "Partes.Solicitud PATCH success count",
             "content": {
               "application/json": {
                 "schema": {
@@ -3714,9 +3764,9 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "ProductoPartesDetalle.WhereFilter",
+                  "title": "Solicitud.WhereFilter",
                   "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
                 }
               }
             }
@@ -3726,29 +3776,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductoPartesDetallePartial"
+                "$ref": "#/components/schemas/SolicitudPartial"
               }
             }
           },
           "x-parameter-index": 1
         },
-        "operationId": "PartesProductoPartesDetalleController.patch"
+        "operationId": "PartesSolicitudController.patch"
       },
       "get": {
-        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-controller-name": "PartesSolicitudController",
         "x-operation-name": "find",
         "tags": [
-          "PartesProductoPartesDetalleController"
+          "PartesSolicitudController"
         ],
         "responses": {
           "200": {
-            "description": "Array of Partes has many ProductoPartesDetalle",
+            "description": "Array of Partes has many Solicitud",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProductoPartesDetalle"
+                    "$ref": "#/components/schemas/Solicitud"
                   }
                 }
               }
@@ -3777,17 +3827,17 @@
             }
           }
         ],
-        "operationId": "PartesProductoPartesDetalleController.find"
+        "operationId": "PartesSolicitudController.find"
       },
       "delete": {
-        "x-controller-name": "PartesProductoPartesDetalleController",
+        "x-controller-name": "PartesSolicitudController",
         "x-operation-name": "delete",
         "tags": [
-          "PartesProductoPartesDetalleController"
+          "PartesSolicitudController"
         ],
         "responses": {
           "200": {
-            "description": "Partes.ProductoPartesDetalle DELETE success count",
+            "description": "Partes.Solicitud DELETE success count",
             "content": {
               "application/json": {
                 "schema": {
@@ -3813,15 +3863,15 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "ProductoPartesDetalle.WhereFilter",
+                  "title": "Solicitud.WhereFilter",
                   "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
                 }
               }
             }
           }
         ],
-        "operationId": "PartesProductoPartesDetalleController.delete"
+        "operationId": "PartesSolicitudController.delete"
       }
     },
     "/partes/{id}": {
@@ -4111,379 +4161,6 @@
         "operationId": "PingController.ping"
       }
     },
-    "/producto-partes-detalles/count": {
-      "get": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "count",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "ProductoPartesDetalle model count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/loopback.Count"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "ProductoPartesDetalle.WhereFilter",
-                  "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
-                }
-              }
-            }
-          }
-        ],
-        "operationId": "ProductoPartesDetalleController.count"
-      }
-    },
-    "/producto-partes-detalles/{id}/partes": {
-      "get": {
-        "x-controller-name": "ProductoPartesDetallePartesController",
-        "x-operation-name": "getPartes",
-        "tags": [
-          "ProductoPartesDetallePartesController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Partes belonging to ProductoPartesDetalle",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Partes"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "ProductoPartesDetallePartesController.getPartes"
-      }
-    },
-    "/producto-partes-detalles/{id}/producto": {
-      "get": {
-        "x-controller-name": "ProductoPartesDetalleProductoController",
-        "x-operation-name": "getProducto",
-        "tags": [
-          "ProductoPartesDetalleProductoController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Producto belonging to ProductoPartesDetalle",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Producto"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "ProductoPartesDetalleProductoController.getProducto"
-      }
-    },
-    "/producto-partes-detalles/{id}": {
-      "put": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "replaceById",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "description": "ProductoPartesDetalle PUT success"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoPartesDetalle"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "ProductoPartesDetalleController.replaceById"
-      },
-      "patch": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "updateById",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "description": "ProductoPartesDetalle PATCH success"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoPartesDetallePartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "ProductoPartesDetalleController.updateById"
-      },
-      "get": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "findById",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "ProductoPartesDetalle model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProductoPartesDetalleWithRelations"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle.Filter"
-                }
-              }
-            }
-          }
-        ],
-        "operationId": "ProductoPartesDetalleController.findById"
-      },
-      "delete": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "deleteById",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "description": "ProductoPartesDetalle DELETE success"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "ProductoPartesDetalleController.deleteById"
-      }
-    },
-    "/producto-partes-detalles": {
-      "post": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "create",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "ProductoPartesDetalle model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewProductoPartesDetalle"
-              }
-            }
-          }
-        },
-        "operationId": "ProductoPartesDetalleController.create"
-      },
-      "patch": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "updateAll",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "ProductoPartesDetalle PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/loopback.Count"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "ProductoPartesDetalle.WhereFilter",
-                  "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
-                }
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoPartesDetallePartial"
-              }
-            }
-          }
-        },
-        "operationId": "ProductoPartesDetalleController.updateAll"
-      },
-      "get": {
-        "x-controller-name": "ProductoPartesDetalleController",
-        "x-operation-name": "find",
-        "tags": [
-          "ProductoPartesDetalleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Array of ProductoPartesDetalle model instances",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProductoPartesDetalleWithRelations"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle.Filter1"
-                }
-              }
-            }
-          }
-        ],
-        "operationId": "ProductoPartesDetalleController.find"
-      }
-    },
     "/productos/count": {
       "get": {
         "x-controller-name": "ProductoController",
@@ -4662,12 +4339,12 @@
         "operationId": "ProductoFabricanteController.getFabricante"
       }
     },
-    "/productos/{id}/producto-partes-detalles": {
+    "/productos/{id}/partes": {
       "post": {
-        "x-controller-name": "ProductoProductoPartesDetalleController",
+        "x-controller-name": "ProductoPartesController",
         "x-operation-name": "create",
         "tags": [
-          "ProductoProductoPartesDetalleController"
+          "ProductoPartesController"
         ],
         "responses": {
           "200": {
@@ -4675,7 +4352,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle"
+                  "$ref": "#/components/schemas/Partes"
                 }
               }
             }
@@ -4695,23 +4372,23 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProductoPartesDetalleInProducto"
+                "$ref": "#/components/schemas/NewPartesInProducto"
               }
             }
           },
           "x-parameter-index": 1
         },
-        "operationId": "ProductoProductoPartesDetalleController.create"
+        "operationId": "ProductoPartesController.create"
       },
       "patch": {
-        "x-controller-name": "ProductoProductoPartesDetalleController",
+        "x-controller-name": "ProductoPartesController",
         "x-operation-name": "patch",
         "tags": [
-          "ProductoProductoPartesDetalleController"
+          "ProductoPartesController"
         ],
         "responses": {
           "200": {
-            "description": "Producto.ProductoPartesDetalle PATCH success count",
+            "description": "Producto.Partes PATCH success count",
             "content": {
               "application/json": {
                 "schema": {
@@ -4737,9 +4414,9 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "ProductoPartesDetalle.WhereFilter",
+                  "title": "Partes.WhereFilter",
                   "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
+                  "x-typescript-type": "@loopback/repository#Where<Partes>"
                 }
               }
             }
@@ -4749,29 +4426,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductoPartesDetallePartial"
+                "$ref": "#/components/schemas/PartesPartial"
               }
             }
           },
           "x-parameter-index": 1
         },
-        "operationId": "ProductoProductoPartesDetalleController.patch"
+        "operationId": "ProductoPartesController.patch"
       },
       "get": {
-        "x-controller-name": "ProductoProductoPartesDetalleController",
+        "x-controller-name": "ProductoPartesController",
         "x-operation-name": "find",
         "tags": [
-          "ProductoProductoPartesDetalleController"
+          "ProductoPartesController"
         ],
         "responses": {
           "200": {
-            "description": "Array of Producto has many ProductoPartesDetalle",
+            "description": "Array of Producto has many Partes",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProductoPartesDetalle"
+                    "$ref": "#/components/schemas/Partes"
                   }
                 }
               }
@@ -4800,17 +4477,17 @@
             }
           }
         ],
-        "operationId": "ProductoProductoPartesDetalleController.find"
+        "operationId": "ProductoPartesController.find"
       },
       "delete": {
-        "x-controller-name": "ProductoProductoPartesDetalleController",
+        "x-controller-name": "ProductoPartesController",
         "x-operation-name": "delete",
         "tags": [
-          "ProductoProductoPartesDetalleController"
+          "ProductoPartesController"
         ],
         "responses": {
           "200": {
-            "description": "Producto.ProductoPartesDetalle DELETE success count",
+            "description": "Producto.Partes DELETE success count",
             "content": {
               "application/json": {
                 "schema": {
@@ -4836,15 +4513,200 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "ProductoPartesDetalle.WhereFilter",
+                  "title": "Partes.WhereFilter",
                   "additionalProperties": true,
-                  "x-typescript-type": "@loopback/repository#Where<ProductoPartesDetalle>"
+                  "x-typescript-type": "@loopback/repository#Where<Partes>"
                 }
               }
             }
           }
         ],
-        "operationId": "ProductoProductoPartesDetalleController.delete"
+        "operationId": "ProductoPartesController.delete"
+      }
+    },
+    "/productos/{id}/solicitud": {
+      "post": {
+        "x-controller-name": "ProductoSolicitudController",
+        "x-operation-name": "create",
+        "tags": [
+          "ProductoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSolicitudInProducto"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoSolicitudController.create"
+      },
+      "patch": {
+        "x-controller-name": "ProductoSolicitudController",
+        "x-operation-name": "patch",
+        "tags": [
+          "ProductoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto.Solicitud PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitudPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoSolicitudController.patch"
+      },
+      "get": {
+        "x-controller-name": "ProductoSolicitudController",
+        "x-operation-name": "find",
+        "tags": [
+          "ProductoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Producto has many Solicitud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitud"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoSolicitudController.find"
+      },
+      "delete": {
+        "x-controller-name": "ProductoSolicitudController",
+        "x-operation-name": "delete",
+        "tags": [
+          "ProductoSolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto.Solicitud DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoSolicitudController.delete"
       }
     },
     "/productos/{id}": {
@@ -5183,6 +5045,76 @@
           }
         ],
         "operationId": "SolicitudEmpleadoController.getEmpleado"
+      }
+    },
+    "/solicitud/{id}/partes": {
+      "get": {
+        "x-controller-name": "SolicitudPartesController",
+        "x-operation-name": "getPartes",
+        "tags": [
+          "SolicitudPartesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes belonging to Solicitud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Partes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SolicitudPartesController.getPartes"
+      }
+    },
+    "/solicitud/{id}/producto": {
+      "get": {
+        "x-controller-name": "SolicitudProductoController",
+        "x-operation-name": "getProducto",
+        "tags": [
+          "SolicitudProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto belonging to Solicitud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SolicitudProductoController.getProducto"
       }
     },
     "/solicitud/{id}": {
@@ -5714,16 +5646,12 @@
           "nombre": {
             "type": "string"
           },
-          "descripcion": {
-            "type": "string"
-          },
           "estado": {
             "type": "boolean"
           }
         },
         "required": [
           "nombre",
-          "descripcion",
           "estado"
         ],
         "additionalProperties": false
@@ -5736,25 +5664,21 @@
           "nombre": {
             "type": "string"
           },
-          "descripcion": {
-            "type": "string"
-          },
           "estado": {
             "type": "boolean"
           }
         },
         "required": [
           "nombre",
-          "descripcion",
           "estado"
         ],
         "additionalProperties": false,
         "x-typescript-type": "Omit<Area, 'id'>"
       },
-      "ProductoPartesDetalleWithRelations": {
-        "title": "ProductoPartesDetalleWithRelations",
+      "EncargadoWithRelations": {
+        "title": "EncargadoWithRelations",
         "type": "object",
-        "description": "(tsType: ProductoPartesDetalleWithRelations, schemaOptions: { includeRelations: true })",
+        "description": "(tsType: EncargadoWithRelations, schemaOptions: { includeRelations: true })",
         "properties": {
           "id": {
             "type": "number"
@@ -5767,29 +5691,118 @@
             "type": "string",
             "format": "date-time"
           },
-          "estado": {
-            "type": "boolean"
-          },
           "idProducto": {
             "type": "number"
           },
-          "idParte": {
+          "idEmpleado": {
             "type": "number"
           },
           "Productos": {
             "$ref": "#/components/schemas/ProductoWithRelations"
           },
-          "Partes": {
-            "$ref": "#/components/schemas/PartesWithRelations"
+          "Empleados": {
+            "$ref": "#/components/schemas/EmpleadoWithRelations"
           }
         },
         "required": [
           "fechaInicial",
-          "fechaFinal",
+          "fechaFinal"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "EncargadoWithRelations"
+      },
+      "EmpleadoWithRelations": {
+        "title": "EmpleadoWithRelations",
+        "type": "object",
+        "description": "(tsType: EmpleadoWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idArea": {
+            "type": "number"
+          },
+          "encargados": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EncargadoWithRelations"
+            }
+          },
+          "Areas": {
+            "$ref": "#/components/schemas/AreaWithRelations"
+          },
+          "solicitud": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SolicitudWithRelations"
+            }
+          }
+        },
+        "required": [
+          "nombre",
+          "correo",
+          "telefono",
           "estado"
         ],
-        "additionalProperties": true,
-        "x-typescript-type": "ProductoPartesDetalleWithRelations"
+        "additionalProperties": false,
+        "x-typescript-type": "EmpleadoWithRelations"
+      },
+      "SolicitudWithRelations": {
+        "title": "SolicitudWithRelations",
+        "type": "object",
+        "description": "(tsType: SolicitudWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fechaSolicitud": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cotizacion": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
+            "type": "number"
+          },
+          "Empleados": {
+            "$ref": "#/components/schemas/EmpleadoWithRelations"
+          },
+          "Partes": {
+            "$ref": "#/components/schemas/PartesWithRelations"
+          },
+          "Productos": {
+            "$ref": "#/components/schemas/ProductoWithRelations"
+          }
+        },
+        "required": [
+          "fechaSolicitud",
+          "cotizacion",
+          "estado"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "SolicitudWithRelations"
       },
       "CategoriasWithRelations": {
         "title": "CategoriasWithRelations",
@@ -5877,14 +5890,20 @@
           "estado": {
             "type": "boolean"
           },
+          "idProducto": {
+            "type": "number"
+          },
           "idFabricante": {
             "type": "number"
           },
-          "productoPartesDetalles": {
+          "solicitud": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ProductoPartesDetalleWithRelations"
+              "$ref": "#/components/schemas/SolicitudWithRelations"
             }
+          },
+          "Productos": {
+            "$ref": "#/components/schemas/ProductoWithRelations"
           },
           "Fabricantes": {
             "$ref": "#/components/schemas/FabricanteWithRelations"
@@ -5982,118 +6001,6 @@
         "additionalProperties": false,
         "x-typescript-type": "GarantiaWithRelations"
       },
-      "SolicitudWithRelations": {
-        "title": "SolicitudWithRelations",
-        "type": "object",
-        "description": "(tsType: SolicitudWithRelations, schemaOptions: { includeRelations: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "partes": {
-            "type": "string"
-          },
-          "descripcion": {
-            "type": "string"
-          },
-          "idEmpleado": {
-            "type": "number"
-          },
-          "Empleados": {
-            "$ref": "#/components/schemas/EmpleadoWithRelations"
-          }
-        },
-        "required": [
-          "partes",
-          "descripcion"
-        ],
-        "additionalProperties": false,
-        "x-typescript-type": "SolicitudWithRelations"
-      },
-      "EmpleadoWithRelations": {
-        "title": "EmpleadoWithRelations",
-        "type": "object",
-        "description": "(tsType: EmpleadoWithRelations, schemaOptions: { includeRelations: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "nombre": {
-            "type": "string"
-          },
-          "correo": {
-            "type": "string"
-          },
-          "telefono": {
-            "type": "string"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idArea": {
-            "type": "number"
-          },
-          "encargados": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EncargadoWithRelations"
-            }
-          },
-          "Areas": {
-            "$ref": "#/components/schemas/AreaWithRelations"
-          },
-          "solicitud": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SolicitudWithRelations"
-            }
-          }
-        },
-        "required": [
-          "nombre",
-          "correo",
-          "telefono",
-          "estado"
-        ],
-        "additionalProperties": false,
-        "x-typescript-type": "EmpleadoWithRelations"
-      },
-      "EncargadoWithRelations": {
-        "title": "EncargadoWithRelations",
-        "type": "object",
-        "description": "(tsType: EncargadoWithRelations, schemaOptions: { includeRelations: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "idProducto": {
-            "type": "number"
-          },
-          "idEmpleado": {
-            "type": "number"
-          },
-          "Productos": {
-            "$ref": "#/components/schemas/ProductoWithRelations"
-          },
-          "Empleados": {
-            "$ref": "#/components/schemas/EmpleadoWithRelations"
-          }
-        },
-        "required": [
-          "fechaInicial",
-          "fechaFinal"
-        ],
-        "additionalProperties": false,
-        "x-typescript-type": "EncargadoWithRelations"
-      },
       "ProductoWithRelations": {
         "title": "ProductoWithRelations",
         "type": "object",
@@ -6163,10 +6070,16 @@
               "$ref": "#/components/schemas/EncargadoWithRelations"
             }
           },
-          "productoPartesDetalles": {
+          "solicitud": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ProductoPartesDetalleWithRelations"
+              "$ref": "#/components/schemas/SolicitudWithRelations"
+            }
+          },
+          "partes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PartesWithRelations"
             }
           }
         },
@@ -6192,9 +6105,6 @@
           "nombre": {
             "type": "string"
           },
-          "descripcion": {
-            "type": "string"
-          },
           "estado": {
             "type": "boolean"
           },
@@ -6213,7 +6123,6 @@
         },
         "required": [
           "nombre",
-          "descripcion",
           "estado"
         ],
         "additionalProperties": false,
@@ -6228,9 +6137,6 @@
             "type": "number"
           },
           "nombre": {
-            "type": "string"
-          },
-          "descripcion": {
             "type": "string"
           },
           "estado": {
@@ -6367,19 +6273,30 @@
           "id": {
             "type": "number"
           },
-          "partes": {
-            "type": "string"
+          "fechaSolicitud": {
+            "type": "string",
+            "format": "date-time"
           },
-          "descripcion": {
-            "type": "string"
+          "cotizacion": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "boolean"
           },
           "idEmpleado": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
             "type": "number"
           }
         },
         "required": [
-          "partes",
-          "descripcion"
+          "fechaSolicitud",
+          "cotizacion",
+          "estado"
         ],
         "additionalProperties": false
       },
@@ -6388,19 +6305,30 @@
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idEmpleado'>, schemaOptions: { title: 'NewSolicitudInEmpleado', exclude: [ 'id' ], optional: [ 'idEmpleado' ] })",
         "properties": {
-          "partes": {
-            "type": "string"
+          "fechaSolicitud": {
+            "type": "string",
+            "format": "date-time"
           },
-          "descripcion": {
-            "type": "string"
+          "cotizacion": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "boolean"
           },
           "idEmpleado": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
             "type": "number"
           }
         },
         "required": [
-          "partes",
-          "descripcion"
+          "fechaSolicitud",
+          "cotizacion",
+          "estado"
         ],
         "additionalProperties": false,
         "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idEmpleado'>"
@@ -6413,13 +6341,23 @@
           "id": {
             "type": "number"
           },
-          "partes": {
-            "type": "string"
+          "fechaSolicitud": {
+            "type": "string",
+            "format": "date-time"
           },
-          "descripcion": {
-            "type": "string"
+          "cotizacion": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "boolean"
           },
           "idEmpleado": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
             "type": "number"
           }
         },
@@ -6681,6 +6619,9 @@
           "estado": {
             "type": "boolean"
           },
+          "idProducto": {
+            "type": "number"
+          },
           "idFabricante": {
             "type": "number"
           }
@@ -6709,6 +6650,9 @@
           },
           "estado": {
             "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
           },
           "idFabricante": {
             "type": "number"
@@ -6742,6 +6686,9 @@
           },
           "estado": {
             "type": "boolean"
+          },
+          "idProducto": {
+            "type": "number"
           },
           "idFabricante": {
             "type": "number"
@@ -6998,116 +6945,35 @@
         "additionalProperties": false,
         "x-typescript-type": "Partial<Garantia>"
       },
-      "ProductoPartesDetalle": {
-        "title": "ProductoPartesDetalle",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idProducto": {
-            "type": "number"
-          },
-          "idParte": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "fechaInicial",
-          "fechaFinal",
-          "estado"
-        ],
-        "additionalProperties": true
-      },
-      "NewProductoPartesDetalleInPartes": {
-        "title": "NewProductoPartesDetalleInPartes",
-        "type": "object",
-        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idParte'>, schemaOptions: { title: 'NewProductoPartesDetalleInPartes', exclude: [ 'id' ], optional: [ 'idParte' ] })",
-        "properties": {
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idProducto": {
-            "type": "number"
-          },
-          "idParte": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "fechaInicial",
-          "fechaFinal",
-          "estado"
-        ],
-        "additionalProperties": true,
-        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idParte'>"
-      },
-      "ProductoPartesDetallePartial": {
-        "title": "ProductoPartesDetallePartial",
-        "type": "object",
-        "description": "(tsType: Partial<ProductoPartesDetalle>, schemaOptions: { partial: true })",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "boolean"
-          },
-          "idProducto": {
-            "type": "number"
-          },
-          "idParte": {
-            "type": "number"
-          }
-        },
-        "additionalProperties": true,
-        "x-typescript-type": "Partial<ProductoPartesDetalle>"
-      },
       "NewSolicitudInPartes": {
         "title": "NewSolicitudInPartes",
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idPartes'>, schemaOptions: { title: 'NewSolicitudInPartes', exclude: [ 'id' ], optional: [ 'idPartes' ] })",
         "properties": {
-          "partes": {
-            "type": "string"
+          "fechaSolicitud": {
+            "type": "string",
+            "format": "date-time"
           },
-          "descripcion": {
-            "type": "string"
+          "cotizacion": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "boolean"
           },
           "idEmpleado": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
             "type": "number"
           }
         },
         "required": [
-          "partes",
-          "descripcion"
+          "fechaSolicitud",
+          "cotizacion",
+          "estado"
         ],
         "additionalProperties": false,
         "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idPartes'>"
@@ -7132,6 +6998,9 @@
           "estado": {
             "type": "boolean"
           },
+          "idProducto": {
+            "type": "number"
+          },
           "idFabricante": {
             "type": "number"
           }
@@ -7142,18 +7011,22 @@
         "additionalProperties": false,
         "x-typescript-type": "Omit<Partes, 'id'>"
       },
-      "NewProductoPartesDetalle": {
-        "title": "NewProductoPartesDetalle",
+      "NewPartesInProducto": {
+        "title": "NewPartesInProducto",
         "type": "object",
-        "description": "(tsType: Omit<ProductoPartesDetalle, 'id'>, schemaOptions: { title: 'NewProductoPartesDetalle', exclude: [ 'id' ] })",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Partes, 'id'>, 'idProducto'>, schemaOptions: { title: 'NewPartesInProducto', exclude: [ 'id' ], optional: [ 'idProducto' ] })",
         "properties": {
-          "fechaInicial": {
-            "type": "string",
-            "format": "date-time"
+          "nombre": {
+            "type": "string"
           },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
+          "tipoParte": {
+            "type": "string"
+          },
+          "capacidad": {
+            "type": "string"
+          },
+          "tecnologia": {
+            "type": "string"
           },
           "estado": {
             "type": "boolean"
@@ -7161,48 +7034,48 @@
           "idProducto": {
             "type": "number"
           },
-          "idParte": {
+          "idFabricante": {
             "type": "number"
           }
         },
         "required": [
-          "fechaInicial",
-          "fechaFinal",
-          "estado"
+          "nombre"
         ],
-        "additionalProperties": true,
-        "x-typescript-type": "Omit<ProductoPartesDetalle, 'id'>"
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Partes, 'id'>, 'idProducto'>"
       },
-      "NewProductoPartesDetalleInProducto": {
-        "title": "NewProductoPartesDetalleInProducto",
+      "NewSolicitudInProducto": {
+        "title": "NewSolicitudInProducto",
         "type": "object",
-        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idProducto'>, schemaOptions: { title: 'NewProductoPartesDetalleInProducto', exclude: [ 'id' ], optional: [ 'idProducto' ] })",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idProducto'>, schemaOptions: { title: 'NewSolicitudInProducto', exclude: [ 'id' ], optional: [ 'idProducto' ] })",
         "properties": {
-          "fechaInicial": {
+          "fechaSolicitud": {
             "type": "string",
             "format": "date-time"
           },
-          "fechaFinal": {
-            "type": "string",
-            "format": "date-time"
+          "cotizacion": {
+            "type": "number"
           },
           "estado": {
             "type": "boolean"
           },
-          "idProducto": {
+          "idEmpleado": {
             "type": "number"
           },
-          "idParte": {
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
             "type": "number"
           }
         },
         "required": [
-          "fechaInicial",
-          "fechaFinal",
+          "fechaSolicitud",
+          "cotizacion",
           "estado"
         ],
-        "additionalProperties": true,
-        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<ProductoPartesDetalle, 'id'>, 'idProducto'>"
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Solicitud, 'id'>, 'idProducto'>"
       },
       "NewProducto": {
         "title": "NewProducto",
@@ -7263,19 +7136,30 @@
         "type": "object",
         "description": "(tsType: Omit<Solicitud, 'id'>, schemaOptions: { title: 'NewSolicitud', exclude: [ 'id' ] })",
         "properties": {
-          "partes": {
-            "type": "string"
+          "fechaSolicitud": {
+            "type": "string",
+            "format": "date-time"
           },
-          "descripcion": {
-            "type": "string"
+          "cotizacion": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "boolean"
           },
           "idEmpleado": {
+            "type": "number"
+          },
+          "idPartes": {
+            "type": "number"
+          },
+          "idProducto": {
             "type": "number"
           }
         },
         "required": [
-          "partes",
-          "descripcion"
+          "fechaSolicitud",
+          "cotizacion",
+          "estado"
         ],
         "additionalProperties": false,
         "x-typescript-type": "Omit<Solicitud, 'id'>"
@@ -7652,9 +7536,6 @@
                   "nombre": {
                     "type": "boolean"
                   },
-                  "descripcion": {
-                    "type": "boolean"
-                  },
                   "estado": {
                     "type": "boolean"
                   }
@@ -7668,7 +7549,6 @@
                   "enum": [
                     "id",
                     "nombre",
-                    "descripcion",
                     "estado"
                   ],
                   "example": "id"
@@ -7742,9 +7622,6 @@
                   "nombre": {
                     "type": "boolean"
                   },
-                  "descripcion": {
-                    "type": "boolean"
-                  },
                   "estado": {
                     "type": "boolean"
                   }
@@ -7758,7 +7635,6 @@
                   "enum": [
                     "id",
                     "nombre",
-                    "descripcion",
                     "estado"
                   ],
                   "example": "id"
@@ -9224,6 +9100,9 @@
                   "estado": {
                     "type": "boolean"
                   },
+                  "idProducto": {
+                    "type": "boolean"
+                  },
                   "idFabricante": {
                     "type": "boolean"
                   }
@@ -9241,6 +9120,7 @@
                     "capacidad",
                     "tecnologia",
                     "estado",
+                    "idProducto",
                     "idFabricante"
                   ],
                   "example": "id"
@@ -9326,6 +9206,9 @@
                   "estado": {
                     "type": "boolean"
                   },
+                  "idProducto": {
+                    "type": "boolean"
+                  },
                   "idFabricante": {
                     "type": "boolean"
                   }
@@ -9343,6 +9226,7 @@
                     "capacidad",
                     "tecnologia",
                     "estado",
+                    "idProducto",
                     "idFabricante"
                   ],
                   "example": "id"
@@ -9393,254 +9277,6 @@
             "additionalProperties": true
           }
         }
-      },
-      "ProductoPartesDetalle.ScopeFilter": {
-        "type": "object",
-        "properties": {
-          "offset": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "limit": {
-            "type": "integer",
-            "minimum": 1,
-            "example": 100
-          },
-          "skip": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "order": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "where": {
-            "type": "object",
-            "additionalProperties": true
-          },
-          "fields": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {},
-                "additionalProperties": true
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "uniqueItems": true
-              }
-            ]
-          },
-          "include": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {},
-              "additionalProperties": true
-            }
-          }
-        },
-        "additionalProperties": false,
-        "title": "ProductoPartesDetalle.ScopeFilter"
-      },
-      "ProductoPartesDetalle.IncludeFilter.Items": {
-        "title": "ProductoPartesDetalle.IncludeFilter.Items",
-        "type": "object",
-        "properties": {
-          "relation": {
-            "type": "string"
-          },
-          "scope": {
-            "$ref": "#/components/schemas/ProductoPartesDetalle.ScopeFilter"
-          }
-        }
-      },
-      "ProductoPartesDetalle.Filter": {
-        "type": "object",
-        "title": "ProductoPartesDetalle.Filter",
-        "properties": {
-          "offset": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "limit": {
-            "type": "integer",
-            "minimum": 1,
-            "example": 100
-          },
-          "skip": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "order": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "fields": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "boolean"
-                  },
-                  "fechaInicial": {
-                    "type": "boolean"
-                  },
-                  "fechaFinal": {
-                    "type": "boolean"
-                  },
-                  "estado": {
-                    "type": "boolean"
-                  },
-                  "idProducto": {
-                    "type": "boolean"
-                  },
-                  "idParte": {
-                    "type": "boolean"
-                  }
-                },
-                "additionalProperties": true
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "example": "id"
-                },
-                "uniqueItems": true
-              }
-            ],
-            "title": "ProductoPartesDetalle.Fields"
-          },
-          "include": {
-            "title": "ProductoPartesDetalle.IncludeFilter",
-            "type": "array",
-            "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle.IncludeFilter.Items"
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            }
-          }
-        },
-        "additionalProperties": false,
-        "x-typescript-type": "@loopback/repository#Filter<ProductoPartesDetalle>"
-      },
-      "ProductoPartesDetalle.Filter1": {
-        "type": "object",
-        "title": "ProductoPartesDetalle.Filter",
-        "properties": {
-          "offset": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "limit": {
-            "type": "integer",
-            "minimum": 1,
-            "example": 100
-          },
-          "skip": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "order": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "where": {
-            "title": "ProductoPartesDetalle.WhereFilter",
-            "type": "object",
-            "additionalProperties": true
-          },
-          "fields": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "boolean"
-                  },
-                  "fechaInicial": {
-                    "type": "boolean"
-                  },
-                  "fechaFinal": {
-                    "type": "boolean"
-                  },
-                  "estado": {
-                    "type": "boolean"
-                  },
-                  "idProducto": {
-                    "type": "boolean"
-                  },
-                  "idParte": {
-                    "type": "boolean"
-                  }
-                },
-                "additionalProperties": true
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "example": "id"
-                },
-                "uniqueItems": true
-              }
-            ],
-            "title": "ProductoPartesDetalle.Fields"
-          },
-          "include": {
-            "title": "ProductoPartesDetalle.IncludeFilter",
-            "type": "array",
-            "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/ProductoPartesDetalle.IncludeFilter.Items"
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            }
-          }
-        },
-        "additionalProperties": false,
-        "x-typescript-type": "@loopback/repository#Filter<ProductoPartesDetalle>"
       },
       "Producto.ScopeFilter": {
         "type": "object",
@@ -10073,13 +9709,22 @@
                   "id": {
                     "type": "boolean"
                   },
-                  "partes": {
+                  "fechaSolicitud": {
                     "type": "boolean"
                   },
-                  "descripcion": {
+                  "cotizacion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
                     "type": "boolean"
                   },
                   "idEmpleado": {
+                    "type": "boolean"
+                  },
+                  "idPartes": {
+                    "type": "boolean"
+                  },
+                  "idProducto": {
                     "type": "boolean"
                   }
                 },
@@ -10091,9 +9736,12 @@
                   "type": "string",
                   "enum": [
                     "id",
-                    "partes",
-                    "descripcion",
-                    "idEmpleado"
+                    "fechaSolicitud",
+                    "cotizacion",
+                    "estado",
+                    "idEmpleado",
+                    "idPartes",
+                    "idProducto"
                   ],
                   "example": "id"
                 },
@@ -10163,13 +9811,22 @@
                   "id": {
                     "type": "boolean"
                   },
-                  "partes": {
+                  "fechaSolicitud": {
                     "type": "boolean"
                   },
-                  "descripcion": {
+                  "cotizacion": {
+                    "type": "boolean"
+                  },
+                  "estado": {
                     "type": "boolean"
                   },
                   "idEmpleado": {
+                    "type": "boolean"
+                  },
+                  "idPartes": {
+                    "type": "boolean"
+                  },
+                  "idProducto": {
                     "type": "boolean"
                   }
                 },
@@ -10181,9 +9838,12 @@
                   "type": "string",
                   "enum": [
                     "id",
-                    "partes",
-                    "descripcion",
-                    "idEmpleado"
+                    "fechaSolicitud",
+                    "cotizacion",
+                    "estado",
+                    "idEmpleado",
+                    "idPartes",
+                    "idProducto"
                   ],
                   "example": "id"
                 },

@@ -120,6 +120,7 @@ export class EncargadoController {
       },
     })
     encargado: Encargado,
+    
   ): Promise<EncargadoWithRelations> {
     await this.encargadoRepository.updateById(id, encargado);
     return this.encargadoRepository.findById(id, {"include": [{"relation": "Productos"}, {"relation": "Empleados"}]});

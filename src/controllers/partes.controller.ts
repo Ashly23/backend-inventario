@@ -38,10 +38,9 @@ export class PartesController {
     })
     partes: Omit<Partes, 'id'>,
   ): Promise<Partes> {
-    console.log('holis')
     let item = await this.partesRepository.create(partes);
-    console.log(item)
-    return this.partesRepository.findById(item.id, {"include": [{"relation": "Fabricantes"}]});
+    //console.log(item)
+    return this.partesRepository.findById(item.id, {"include": [{"relation": "Fabricantes"}, {"relation": "Productos"} ]});
   }
 
   @get('/partes/count')
@@ -125,7 +124,7 @@ export class PartesController {
   ): Promise<PartesWithRelations> {
     await this.partesRepository.updateById(id, partes);
     //modificar
-    return this.partesRepository.findById(id, {"include": [{"relation": "Fabricantes"}]});
+    return this.partesRepository.findById(id, {"include": [{"relation": "Fabricantes"}, {"relation": "Productos"}]}); 
   }
 
   @put('/partes/{id}')

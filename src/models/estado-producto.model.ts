@@ -19,7 +19,7 @@ export class EstadoProducto extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'nombre', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'nombre', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   nombre: string;
 
@@ -27,7 +27,7 @@ export class EstadoProducto extends Entity {
     type: 'string',
     required: true,
     length: 200,
-    mssql: {columnName: 'observacion', dataType: 'nchar', dataLength: 200, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'observacion', dataType: 'nvarchar', dataLength: 200, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   observacion: string;
 

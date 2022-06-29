@@ -1,7 +1,7 @@
 import {belongsTo, Entity, model, property, hasMany} from '@loopback/repository';
 import {Fabricante} from './fabricante.model';
-import {ProductoPartesDetalle} from './producto-partes-detalle.model';
 import {Solicitud} from './solicitud.model';
+import {Producto} from './producto.model';
 
 @model({settings: {idInjection: false, mssql: {schema: 'dbo', table: 'Partes'}}})
 export class Partes extends Entity {
@@ -19,28 +19,28 @@ export class Partes extends Entity {
     type: 'string',
     required: true,
     length: 50,
-    mssql: {columnName: 'nombre', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
+    mssql: {columnName: 'nombre', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   nombre: string;
 
   @property({
     type: 'string',
     length: 50,
-    mssql: {columnName: 'tipoParte', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'tipoParte', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   tipoParte?: string;
 
   @property({
     type: 'string',
     length: 50,
-    mssql: {columnName: 'capacidad', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'capacidad', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   capacidad?: string;
 
   @property({
     type: 'string',
     length: 50,
-    mssql: {columnName: 'tecnologia', dataType: 'nchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
+    mssql: {columnName: 'tecnologia', dataType: 'nvarchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   tecnologia?: string;
 
@@ -49,12 +49,14 @@ export class Partes extends Entity {
     mssql: {columnName: 'estado', dataType: 'bit', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'NO'},
   })
   estado: boolean;
-
-
   //@hasMany(() => Producto, {keyTo: 'idPartes'})
-  @hasMany(() => ProductoPartesDetalle, {keyTo: 'idParte'})
-  productoPartesDetalles: ProductoPartesDetalle[];
 
+  @hasMany(() => Solicitud, {keyTo: 'idPartes'})
+  solicitud: Solicitud[];
+
+  @belongsTo(() => Producto, {name: 'Productos'})
+  idProducto: number;
+  
   @belongsTo(() => Fabricante, {name: 'Fabricantes'})
   idFabricante: number;
 
