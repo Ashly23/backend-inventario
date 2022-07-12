@@ -1,4 +1,4 @@
-import {belongsTo, Entity, model, property} from '@loopback/repository';
+import {belongsTo, Entity, model, property, hasMany} from '@loopback/repository';
 import {Empleado} from './empleado.model';
 import {Producto} from './producto.model';
 
@@ -30,12 +30,11 @@ export class Encargado extends Entity {
   })
   fechaFinal: Date;
 
-  @belongsTo(() => Producto, {name: 'Productos'})
-  idProducto: number;
-
   @belongsTo(() => Empleado, {name: 'Empleados'})
   idEmpleado: number;
 
+  @belongsTo(() => Producto, {name: 'Productos'})
+  idProducto: number;
   // Define well-known properties here
 
   // Indexer property to allow additional data

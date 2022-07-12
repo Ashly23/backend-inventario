@@ -1244,6 +1244,191 @@
         "operationId": "EmpleadoAreaController.getArea"
       }
     },
+    "/empleados/{id}/productos": {
+      "post": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "create",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewProductoInEmpleado"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoProductoController.create"
+      },
+      "patch": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "patch",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado.Producto PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Producto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Producto>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "EmpleadoProductoController.patch"
+      },
+      "get": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "find",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Empleado has many Producto",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoProductoController.find"
+      },
+      "delete": {
+        "x-controller-name": "EmpleadoProductoController",
+        "x-operation-name": "delete",
+        "tags": [
+          "EmpleadoProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado.Producto DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Producto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Producto>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "EmpleadoProductoController.delete"
+      }
+    },
     "/empleados/{id}/solicitud": {
       "post": {
         "x-controller-name": "EmpleadoSolicitudController",
@@ -4269,6 +4454,226 @@
         "operationId": "ProductoCategoriasController.getCategorias"
       }
     },
+    "/productos/{id}/empleado": {
+      "get": {
+        "x-controller-name": "ProductoEmpleadoController",
+        "x-operation-name": "getEmpleado",
+        "tags": [
+          "ProductoEmpleadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Empleado belonging to Producto",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empleado"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ProductoEmpleadoController.getEmpleado"
+      }
+    },
+    "/productos/{id}/encargados": {
+      "post": {
+        "x-controller-name": "ProductoEncargadoController",
+        "x-operation-name": "create",
+        "tags": [
+          "ProductoEncargadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Encargado"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEncargadoInProducto"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoEncargadoController.create"
+      },
+      "patch": {
+        "x-controller-name": "ProductoEncargadoController",
+        "x-operation-name": "patch",
+        "tags": [
+          "ProductoEncargadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto.Encargado PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Encargado.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Encargado>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EncargadoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoEncargadoController.patch"
+      },
+      "get": {
+        "x-controller-name": "ProductoEncargadoController",
+        "x-operation-name": "find",
+        "tags": [
+          "ProductoEncargadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Producto has many Encargado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Encargado"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoEncargadoController.find"
+      },
+      "delete": {
+        "x-controller-name": "ProductoEncargadoController",
+        "x-operation-name": "delete",
+        "tags": [
+          "ProductoEncargadoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto.Encargado DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Encargado.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Encargado>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoEncargadoController.delete"
+      }
+    },
     "/productos/{id}/estado-producto": {
       "get": {
         "x-controller-name": "ProductoEstadoProductoController",
@@ -5485,9 +5890,6 @@
           "id": {
             "type": "number"
           },
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -5507,7 +5909,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -5521,10 +5923,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -5538,9 +5942,6 @@
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idArea'>, schemaOptions: { title: 'NewProductoInArea', exclude: [ 'id' ], optional: [ 'idArea' ] })",
         "properties": {
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -5560,7 +5961,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -5574,10 +5975,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -5595,9 +5998,6 @@
           "id": {
             "type": "number"
           },
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -5617,7 +6017,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -5630,6 +6030,9 @@
             "type": "number"
           },
           "idFabricante": {
+            "type": "number"
+          },
+          "idEmpleado": {
             "type": "number"
           }
         },
@@ -5691,17 +6094,17 @@
             "type": "string",
             "format": "date-time"
           },
-          "idProducto": {
-            "type": "number"
-          },
           "idEmpleado": {
             "type": "number"
           },
-          "Productos": {
-            "$ref": "#/components/schemas/ProductoWithRelations"
+          "idProducto": {
+            "type": "number"
           },
           "Empleados": {
             "$ref": "#/components/schemas/EmpleadoWithRelations"
+          },
+          "Productos": {
+            "$ref": "#/components/schemas/ProductoWithRelations"
           }
         },
         "required": [
@@ -5747,6 +6150,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SolicitudWithRelations"
+            }
+          },
+          "productos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductoWithRelations"
             }
           }
         },
@@ -6009,9 +6418,6 @@
           "id": {
             "type": "number"
           },
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -6031,7 +6437,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -6044,6 +6450,9 @@
             "type": "number"
           },
           "idFabricante": {
+            "type": "number"
+          },
+          "idEmpleado": {
             "type": "number"
           },
           "Areas": {
@@ -6064,12 +6473,6 @@
               "$ref": "#/components/schemas/GarantiaWithRelations"
             }
           },
-          "encargados": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EncargadoWithRelations"
-            }
-          },
           "solicitud": {
             "type": "array",
             "items": {
@@ -6081,10 +6484,18 @@
             "items": {
               "$ref": "#/components/schemas/PartesWithRelations"
             }
+          },
+          "Empleados": {
+            "$ref": "#/components/schemas/EmpleadoWithRelations"
+          },
+          "encargados": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EncargadoWithRelations"
+            }
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -6217,9 +6628,6 @@
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idCategorias'>, schemaOptions: { title: 'NewProductoInCategorias', exclude: [ 'id' ], optional: [ 'idCategorias' ] })",
         "properties": {
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -6239,7 +6647,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -6253,10 +6661,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -6265,6 +6675,59 @@
         ],
         "additionalProperties": false,
         "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idCategorias'>"
+      },
+      "NewProductoInEmpleado": {
+        "title": "NewProductoInEmpleado",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idEmpleado'>, schemaOptions: { title: 'NewProductoInEmpleado', exclude: [ 'id' ], optional: [ 'idEmpleado' ] })",
+        "properties": {
+          "fechaCompra": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valor": {
+            "type": "number"
+          },
+          "vidaUtil": {
+            "type": "number"
+          },
+          "valorDepreciado": {
+            "type": "number"
+          },
+          "anioDepreciados": {
+            "type": "number"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "serie": {
+            "type": "string"
+          },
+          "idArea": {
+            "type": "number"
+          },
+          "idCategorias": {
+            "type": "number"
+          },
+          "idEstadoProducto": {
+            "type": "number"
+          },
+          "idFabricante": {
+            "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaCompra",
+          "valor",
+          "vidaUtil",
+          "valorDepreciado",
+          "anioDepreciados"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idEmpleado'>"
       },
       "Solicitud": {
         "title": "Solicitud",
@@ -6409,10 +6872,10 @@
             "type": "string",
             "format": "date-time"
           },
-          "idProducto": {
+          "idEmpleado": {
             "type": "number"
           },
-          "idEmpleado": {
+          "idProducto": {
             "type": "number"
           }
         },
@@ -6435,10 +6898,10 @@
             "type": "string",
             "format": "date-time"
           },
-          "idProducto": {
+          "idEmpleado": {
             "type": "number"
           },
-          "idEmpleado": {
+          "idProducto": {
             "type": "number"
           }
         },
@@ -6465,10 +6928,10 @@
             "type": "string",
             "format": "date-time"
           },
-          "idProducto": {
+          "idEmpleado": {
             "type": "number"
           },
-          "idEmpleado": {
+          "idProducto": {
             "type": "number"
           }
         },
@@ -6480,9 +6943,6 @@
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idEstadoProducto'>, schemaOptions: { title: 'NewProductoInEstadoProducto', exclude: [ 'id' ], optional: [ 'idEstadoProducto' ] })",
         "properties": {
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -6502,7 +6962,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -6516,10 +6976,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -6702,9 +7164,6 @@
         "type": "object",
         "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Producto, 'id'>, 'idFabricante'>, schemaOptions: { title: 'NewProductoInFabricante', exclude: [ 'id' ], optional: [ 'idFabricante' ] })",
         "properties": {
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -6724,7 +7183,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -6738,10 +7197,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -7011,6 +7472,33 @@
         "additionalProperties": false,
         "x-typescript-type": "Omit<Partes, 'id'>"
       },
+      "NewEncargadoInProducto": {
+        "title": "NewEncargadoInProducto",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Encargado, 'id'>, 'idProducto'>, schemaOptions: { title: 'NewEncargadoInProducto', exclude: [ 'id' ], optional: [ 'idProducto' ] })",
+        "properties": {
+          "fechaInicial": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFinal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idEmpleado": {
+            "type": "number"
+          },
+          "idProducto": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "fechaInicial",
+          "fechaFinal"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Encargado, 'id'>, 'idProducto'>"
+      },
       "NewPartesInProducto": {
         "title": "NewPartesInProducto",
         "type": "object",
@@ -7082,9 +7570,6 @@
         "type": "object",
         "description": "(tsType: Omit<Producto, 'id'>, schemaOptions: { title: 'NewProducto', exclude: [ 'id' ] })",
         "properties": {
-          "nombre": {
-            "type": "string"
-          },
           "fechaCompra": {
             "type": "string",
             "format": "date-time"
@@ -7104,7 +7589,7 @@
           "modelo": {
             "type": "string"
           },
-          "etiquetaServ": {
+          "serie": {
             "type": "string"
           },
           "idArea": {
@@ -7118,10 +7603,12 @@
           },
           "idFabricante": {
             "type": "number"
+          },
+          "idEmpleado": {
+            "type": "number"
           }
         },
         "required": [
-          "nombre",
           "fechaCompra",
           "valor",
           "vidaUtil",
@@ -8043,10 +8530,10 @@
                   "fechaFinal": {
                     "type": "boolean"
                   },
-                  "idProducto": {
+                  "idEmpleado": {
                     "type": "boolean"
                   },
-                  "idEmpleado": {
+                  "idProducto": {
                     "type": "boolean"
                   }
                 },
@@ -8060,8 +8547,8 @@
                     "id",
                     "fechaInicial",
                     "fechaFinal",
-                    "idProducto",
-                    "idEmpleado"
+                    "idEmpleado",
+                    "idProducto"
                   ],
                   "example": "id"
                 },
@@ -8137,10 +8624,10 @@
                   "fechaFinal": {
                     "type": "boolean"
                   },
-                  "idProducto": {
+                  "idEmpleado": {
                     "type": "boolean"
                   },
-                  "idEmpleado": {
+                  "idProducto": {
                     "type": "boolean"
                   }
                 },
@@ -8154,8 +8641,8 @@
                     "id",
                     "fechaInicial",
                     "fechaFinal",
-                    "idProducto",
-                    "idEmpleado"
+                    "idEmpleado",
+                    "idProducto"
                   ],
                   "example": "id"
                 },
@@ -9389,9 +9876,6 @@
                   "id": {
                     "type": "boolean"
                   },
-                  "nombre": {
-                    "type": "boolean"
-                  },
                   "fechaCompra": {
                     "type": "boolean"
                   },
@@ -9410,7 +9894,7 @@
                   "modelo": {
                     "type": "boolean"
                   },
-                  "etiquetaServ": {
+                  "serie": {
                     "type": "boolean"
                   },
                   "idArea": {
@@ -9424,6 +9908,9 @@
                   },
                   "idFabricante": {
                     "type": "boolean"
+                  },
+                  "idEmpleado": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -9434,18 +9921,18 @@
                   "type": "string",
                   "enum": [
                     "id",
-                    "nombre",
                     "fechaCompra",
                     "valor",
                     "vidaUtil",
                     "valorDepreciado",
                     "anioDepreciados",
                     "modelo",
-                    "etiquetaServ",
+                    "serie",
                     "idArea",
                     "idCategorias",
                     "idEstadoProducto",
-                    "idFabricante"
+                    "idFabricante",
+                    "idEmpleado"
                   ],
                   "example": "id"
                 },
@@ -9515,9 +10002,6 @@
                   "id": {
                     "type": "boolean"
                   },
-                  "nombre": {
-                    "type": "boolean"
-                  },
                   "fechaCompra": {
                     "type": "boolean"
                   },
@@ -9536,7 +10020,7 @@
                   "modelo": {
                     "type": "boolean"
                   },
-                  "etiquetaServ": {
+                  "serie": {
                     "type": "boolean"
                   },
                   "idArea": {
@@ -9550,6 +10034,9 @@
                   },
                   "idFabricante": {
                     "type": "boolean"
+                  },
+                  "idEmpleado": {
+                    "type": "boolean"
                   }
                 },
                 "additionalProperties": false
@@ -9560,18 +10047,18 @@
                   "type": "string",
                   "enum": [
                     "id",
-                    "nombre",
                     "fechaCompra",
                     "valor",
                     "vidaUtil",
                     "valorDepreciado",
                     "anioDepreciados",
                     "modelo",
-                    "etiquetaServ",
+                    "serie",
                     "idArea",
                     "idCategorias",
                     "idEstadoProducto",
-                    "idFabricante"
+                    "idFabricante",
+                    "idEmpleado"
                   ],
                   "example": "id"
                 },

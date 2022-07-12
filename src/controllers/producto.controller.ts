@@ -11,7 +11,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Producto} from '../models';
+import {Producto, ProductoWithRelations} from '../models';
 import {ProductoRepository} from '../repositories';
 
 export class ProductoController {
@@ -38,8 +38,8 @@ export class ProductoController {
     })
     producto: Omit<Producto, 'id'>,
   ): Promise<Producto> {
-    // console.log(producto)
-    return this.productoRepository.create(producto);
+    let item = await this.productoRepository.create(producto);
+    return this.productoRepository.findById(item.id, {"include": [{"relation": "Empleados"}]});
   }
 
   @get('/productos/count')
@@ -120,8 +120,10 @@ export class ProductoController {
       },
     })
     producto: Producto,
-  ): Promise<void> {
+  ): Promise<ProductoWithRelations> {
     await this.productoRepository.updateById(id, producto);
+    //mm
+    return this.productoRepository.findById(id, {"include": [{"relation": "Empleados"}]});
   }
 
   @put('/productos/{id}')
